@@ -1,0 +1,288 @@
+Controllers found: 1
+----------------------------------------------------------------------
+Physical Device information
+----------------------------------------------------------------------
+      Device #0
+         Device is a Hard drive
+         State                              : Online
+         Block Size                         : 512 Bytes
+         Supported                          : Yes
+         Transfer Speed                     : SATA 6.0 Gb/s
+         Reported Channel,Device(T:L)       : 0,0(0:0)
+         Reported Location                  : Connector 0, Device 0
+         Vendor                             : WDC
+         Model                              : WDC WD2000FYYZ-01U1
+         Firmware                           : 01.01K02
+         Serial number                      : WD-WMC1P0370627
+         World-wide name                    : 50014EE0591994E7
+         Reserved Size                      : 3163160 KB
+         Used Size                          : 1904640 MB
+         Unused Size                        : 64 KB
+         Total Size                         : 1907729 MB
+         Write Cache                        : Enabled (write-back)
+         FRU                                : None
+         S.M.A.R.T.                         : No
+         S.M.A.R.T. warnings                : 0
+         Power State                        : Full rpm
+         Supported Power States             : Full rpm,Powered off,Reduced rpm
+         SSD                                : No
+         Temperature                        : 30 C/ 86 F
+         NCQ status                         : Enabled
+      ----------------------------------------------------------------
+      Device Phy Information                
+      ----------------------------------------------------------------
+         Phy #0
+            PHY Identifier                  : 0
+            SAS Address                     : 3000000000000003
+            Attached PHY Identifier         : 3
+            Attached SAS Address            : 50000D1108189300
+
+      Device #1
+         Device is a Hard drive
+         State                              : Online
+         Block Size                         : 512 Bytes
+         Supported                          : Yes
+         Transfer Speed                     : SATA 6.0 Gb/s
+         Reported Channel,Device(T:L)       : 0,1(1:0)
+         Reported Location                  : Connector 0, Device 1
+         Vendor                             : WDC
+         Model                              : WDC WD20EFRX-68EUZ0
+         Firmware                           : 80.00A80
+         Serial number                      : WD-WCC4MPJ4E65N
+         World-wide name                    : 50014EE20A9BDD71
+         Reserved Size                      : 3163160 KB
+         Used Size                          : 1904640 MB
+         Unused Size                        : 64 KB
+         Total Size                         : 1907729 MB
+         Write Cache                        : Enabled (write-back)
+         FRU                                : None
+         S.M.A.R.T.                         : No
+         S.M.A.R.T. warnings                : 0
+         Power State                        : Full rpm
+         Supported Power States             : Full rpm,Powered off
+         SSD                                : No
+         Temperature                        : Not Supported
+         NCQ status                         : Enabled
+      ----------------------------------------------------------------
+      Device Phy Information                
+      ----------------------------------------------------------------
+         Phy #0
+            PHY Identifier                  : 0
+            SAS Address                     : 3000000000000002
+            Attached PHY Identifier         : 2
+            Attached SAS Address            : 50000D1108189300
+
+      Device #2
+         Device is a Hard drive
+         State                              : Online
+         Block Size                         : 512 Bytes
+         Supported                          : Yes
+         Transfer Speed                     : SATA 6.0 Gb/s
+         Reported Channel,Device(T:L)       : 0,2(2:0)
+         Reported Location                  : Connector 0, Device 2
+         Vendor                             : WDC
+         Model                              : WDC WD2000FYYZ-01U1
+         Firmware                           : 01.01K02
+         Serial number                      : WD-WMC1P0362917
+         World-wide name                    : 50014EE059199A02
+         Reserved Size                      : 3163160 KB
+         Used Size                          : 1904640 MB
+         Unused Size                        : 64 KB
+         Total Size                         : 1907729 MB
+         Write Cache                        : Enabled (write-back)
+         FRU                                : None
+         S.M.A.R.T.                         : No
+         S.M.A.R.T. warnings                : 0
+         Power State                        : Full rpm
+         Supported Power States             : Full rpm,Powered off,Reduced rpm
+         SSD                                : No
+         Temperature                        : Not Supported
+         NCQ status                         : Enabled
+      ----------------------------------------------------------------
+      Device Phy Information                
+      ----------------------------------------------------------------
+         Phy #0
+            PHY Identifier                  : 0
+            SAS Address                     : 3000000000000001
+            Attached PHY Identifier         : 1
+            Attached SAS Address            : 50000D1108189300
+
+      Device #3
+         Device is a Hard drive
+         State                              : Online
+         Block Size                         : 512 Bytes
+         Supported                          : Yes
+         Transfer Speed                     : SATA 6.0 Gb/s
+         Reported Channel,Device(T:L)       : 0,3(3:0)
+         Reported Location                  : Connector 0, Device 3
+         Vendor                             : WDC
+         Model                              : WDC WD20EFRX-68EUZ0
+         Firmware                           : 80.00A80
+         Serial number                      : WD-WCC4MPJ4EK29
+         World-wide name                    : 50014EE2B546B4D1
+         Reserved Size                      : 3163160 KB
+         Used Size                          : 1904640 MB
+         Unused Size                        : 64 KB
+         Total Size                         : 1907729 MB
+         Write Cache                        : Enabled (write-back)
+         FRU                                : None
+         S.M.A.R.T.                         : No
+         S.M.A.R.T. warnings                : 0
+         Power State                        : Full rpm
+         Supported Power States             : Full rpm,Powered off
+         SSD                                : No
+         Temperature                        : Not Supported
+         NCQ status                         : Enabled
+      ----------------------------------------------------------------
+      Device Phy Information                
+      ----------------------------------------------------------------
+         Phy #0
+            PHY Identifier                  : 0
+            SAS Address                     : 3000000000000000
+            Attached PHY Identifier         : 0
+            Attached SAS Address            : 50000D1108189300
+
+      Device #4
+         Device is a Hard drive
+         State                              : Online
+         Block Size                         : 512 Bytes
+         Supported                          : Yes
+         Transfer Speed                     : SATA 6.0 Gb/s
+         Reported Channel,Device(T:L)       : 0,4(4:0)
+         Reported Location                  : Connector 1, Device 0
+         Vendor                             : WDC
+         Model                              : WDC WD2000FYYZ-01U1
+         Firmware                           : 01.01K02
+         Serial number                      : WD-WMC1P0370012
+         World-wide name                    : 50014EE0591992F7
+         Reserved Size                      : 3163160 KB
+         Used Size                          : 1904640 MB
+         Unused Size                        : 64 KB
+         Total Size                         : 1907729 MB
+         Write Cache                        : Enabled (write-back)
+         FRU                                : None
+         S.M.A.R.T.                         : No
+         S.M.A.R.T. warnings                : 0
+         Power State                        : Full rpm
+         Supported Power States             : Full rpm,Powered off,Reduced rpm
+         SSD                                : No
+         Temperature                        : Not Supported
+         NCQ status                         : Enabled
+      ----------------------------------------------------------------
+      Device Phy Information                
+      ----------------------------------------------------------------
+         Phy #0
+            PHY Identifier                  : 0
+            SAS Address                     : 3000000000000007
+            Attached PHY Identifier         : 7
+            Attached SAS Address            : 50000D1108189300
+
+      Device #5
+         Device is a Hard drive
+         State                              : Online
+         Block Size                         : 512 Bytes
+         Supported                          : Yes
+         Transfer Speed                     : SATA 6.0 Gb/s
+         Reported Channel,Device(T:L)       : 0,5(5:0)
+         Reported Location                  : Connector 1, Device 1
+         Vendor                             : WDC
+         Model                              : WDC WD2000FYYZ-01U1
+         Firmware                           : 01.01K02
+         Serial number                      : WD-WMC1P0370257
+         World-wide name                    : 50014EE0AE6F2B4F
+         Reserved Size                      : 3163160 KB
+         Used Size                          : 1904640 MB
+         Unused Size                        : 64 KB
+         Total Size                         : 1907729 MB
+         Write Cache                        : Enabled (write-back)
+         FRU                                : None
+         S.M.A.R.T.                         : No
+         S.M.A.R.T. warnings                : 0
+         Power State                        : Full rpm
+         Supported Power States             : Full rpm,Powered off,Reduced rpm
+         SSD                                : No
+         Temperature                        : Not Supported
+         NCQ status                         : Enabled
+      ----------------------------------------------------------------
+      Device Phy Information                
+      ----------------------------------------------------------------
+         Phy #0
+            PHY Identifier                  : 0
+            SAS Address                     : 3000000000000006
+            Attached PHY Identifier         : 6
+            Attached SAS Address            : 50000D1108189300
+
+      Device #6
+         Device is a Hard drive
+         State                              : Online
+         Block Size                         : 512 Bytes
+         Supported                          : Yes
+         Transfer Speed                     : SATA 6.0 Gb/s
+         Reported Channel,Device(T:L)       : 0,6(6:0)
+         Reported Location                  : Connector 1, Device 2
+         Vendor                             : WDC
+         Model                              : WDC WD2000FYYZ-01U1
+         Firmware                           : 01.01K02
+         Serial number                      : WD-WMC1P0369950
+         World-wide name                    : 50014EE0AE6F181F
+         Reserved Size                      : 3163160 KB
+         Used Size                          : 1904640 MB
+         Unused Size                        : 64 KB
+         Total Size                         : 1907729 MB
+         Write Cache                        : Enabled (write-back)
+         FRU                                : None
+         S.M.A.R.T.                         : No
+         S.M.A.R.T. warnings                : 0
+         Power State                        : Full rpm
+         Supported Power States             : Full rpm,Powered off,Reduced rpm
+         SSD                                : No
+         Temperature                        : Not Supported
+         NCQ status                         : Enabled
+      ----------------------------------------------------------------
+      Device Phy Information                
+      ----------------------------------------------------------------
+         Phy #0
+            PHY Identifier                  : 0
+            SAS Address                     : 3000000000000005
+            Attached PHY Identifier         : 5
+            Attached SAS Address            : 50000D1108189300
+
+      Device #7
+         Device is a Hard drive
+         State                              : Online
+         Block Size                         : 512 Bytes
+         Supported                          : Yes
+         Transfer Speed                     : SATA 6.0 Gb/s
+         Reported Channel,Device(T:L)       : 0,7(7:0)
+         Reported Location                  : Connector 1, Device 3
+         Vendor                             : WDC
+         Model                              : WDC WD2000FYYZ-01U1
+         Firmware                           : 01.01K02
+         Serial number                      : WD-WMC1P0370389
+         World-wide name                    : 50014EE0AE6F255F
+         Reserved Size                      : 3163160 KB
+         Used Size                          : 1904640 MB
+         Unused Size                        : 64 KB
+         Total Size                         : 1907729 MB
+         Write Cache                        : Enabled (write-back)
+         FRU                                : None
+         S.M.A.R.T.                         : No
+         S.M.A.R.T. warnings                : 0
+         Power State                        : Full rpm
+         Supported Power States             : Full rpm,Powered off,Reduced rpm
+         SSD                                : No
+         Temperature                        : Not Supported
+         NCQ status                         : Enabled
+      ----------------------------------------------------------------
+      Device Phy Information                
+      ----------------------------------------------------------------
+         Phy #0
+            PHY Identifier                  : 0
+            SAS Address                     : 3000000000000004
+            Attached PHY Identifier         : 4
+            Attached SAS Address            : 50000D1108189300
+
+
+
+Command completed successfully.
+

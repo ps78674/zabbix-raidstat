@@ -1,0 +1,42 @@
+Controllers found: 1
+----------------------------------------------------------------------
+Logical device information
+----------------------------------------------------------------------
+Logical Device number 0
+   Logical Device name                      : DevOps-ITO-3
+   Block Size of member drives              : 512 Bytes
+   RAID level                               : 10
+   Unique Identifier                        : CA44A631
+   Status of Logical Device                 : Optimal
+   Additional details                       : Quick initialized
+   Size                                     : 7618550 MB
+   Parity space                             : 7618560 MB
+   Stripe-unit size                         : 512 KB
+   Interface Type                           : Serial ATA
+   Device Type                              : HDD
+   Read-cache setting                       : Enabled
+   Read-cache status                        : On
+   Write-cache setting                      : On when protected by battery/ZMM
+   Write-cache status                       : Off
+   Partitioned                              : Yes
+   Protected by Hot-Spare                   : No
+   Bootable                                 : Yes
+   Failed stripes                           : No
+   Power settings                           : Disabled
+   --------------------------------------------------------
+   Logical Device segment information
+   --------------------------------------------------------
+   Group 0, Segment 0                       : Present (1907729MB, SATA, HDD, Connector:0, Device:0)      WD-WMC1P0370627
+   Group 0, Segment 1                       : Present (1907729MB, SATA, HDD, Connector:0, Device:1)      WD-WCC4MPJ4E65N
+   Group 1, Segment 0                       : Present (1907729MB, SATA, HDD, Connector:0, Device:2)      WD-WMC1P0362917
+   Group 1, Segment 1                       : Present (1907729MB, SATA, HDD, Connector:0, Device:3)      WD-WCC4MPJ4EK29
+   Group 2, Segment 0                       : Present (1907729MB, SATA, HDD, Connector:1, Device:0)      WD-WMC1P0370012
+   Group 2, Segment 1                       : Present (1907729MB, SATA, HDD, Connector:1, Device:1)      WD-WMC1P0370257
+   Group 3, Segment 0                       : Present (1907729MB, SATA, HDD, Connector:1, Device:2)      WD-WMC1P0369950
+   Group 3, Segment 1                       : Present (1907729MB, SATA, HDD, Connector:1, Device:3)      WD-WMC1P0370389
+
+
+
+
+Command completed successfully.
+

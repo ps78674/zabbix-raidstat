@@ -1,0 +1,26 @@
+
+Smart Array P410i in Slot 0 (Embedded)
+
+   Array A
+
+      Logical Drive: 1
+         Size: 558.9 GB
+         Fault Tolerance: 1
+         Heads: 255
+         Sectors Per Track: 32
+         Cylinders: 65535
+         Strip Size: 256 KB
+         Full Stripe Size: 256 KB
+         Status: OK
+         Caching:  Enabled
+         Unique Identifier: 600508B1001C9B9BAC4764D57540ADF1
+         Disk Name: /dev/sda 
+         Mount Points: None
+         Logical Drive Label: A732CFF65001438023879C30C015
+         Mirror Group 1:
+            physicaldrive 1I:1:1 (port 1I:box 1:bay 1, SAS HDD, 600 GB, OK)
+         Mirror Group 2:
+            physicaldrive 1I:1:2 (port 1I:box 1:bay 2, SAS HDD, 600 GB, OK)
+         Drive Type: Data
+         LD Acceleration Method: Controller Cache
+

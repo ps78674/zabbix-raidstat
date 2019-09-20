@@ -1,0 +1,9 @@
+Controllers found: 1
+----------------------------------------------------------------------
+Controller information
+----------------------------------------------------------------------
+   Controller ID             : Status, Slot, Mode, Name, SerialNumber, WWN
+----------------------------------------------------------------------
+   Controller 1:             : Optimal, Slot 0, RAID (Expose RAW), Adaptec 6805, 4B20136ACAE, 50000D1108189300
+
+Command completed successfully.

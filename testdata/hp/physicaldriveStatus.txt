@@ -1,0 +1,27 @@
+
+Smart Array P410i in Slot 0 (Embedded)
+
+   Array A
+
+      physicaldrive 1I:1:1
+         Port: 1I
+         Box: 1
+         Bay: 1
+         Status: OK
+         Drive Type: Data Drive
+         Interface Type: SAS
+         Size: 600 GB
+         Drive exposed to OS: False
+         Logical/Physical Block Size: 512/512
+         Rotational Speed: 10000
+         Firmware Revision: HPD8
+         Serial Number: 6XR29YJB0000B236KS2W
+         WWID: 5000C5004BE9AFD9
+         Model: HP      EG0600FBLSH
+         Current Temperature (C): 38
+         Maximum Temperature (C): 48
+         PHY Count: 2
+         PHY Transfer Rate: 6.0Gbps, Unknown
+         Sanitize Erase Supported: False
+         Shingled Magnetic Recording Support: None
+

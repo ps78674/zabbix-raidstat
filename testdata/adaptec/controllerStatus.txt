@@ -1,0 +1,148 @@
+Controllers found: 1
+----------------------------------------------------------------------
+Controller information
+----------------------------------------------------------------------
+   Controller Status                        : Optimal
+   Channel description                      : SAS/SATA
+   Controller Model                         : Adaptec 6805
+   Controller Serial Number                 : 4B20136ACAE
+   Controller World Wide Name               : 50000D1108189300
+   Controller Alarm                         : Enabled
+   Physical Slot                            : 0
+   Temperature                              : -4 C/ 25 F (Normal)
+   Installed memory                         : 512 MB
+   Host bus type                            : PCIe
+   Host bus speed                           : 5000 MHz
+   Host bus link width                      : 8 bit(s)/link(s)
+   Global task priority                     : High
+   Performance Mode                         : Default/Dynamic
+   PCI Device ID                            : 651
+   Stayawake period                         : Disabled
+   Spinup limit internal drives             : 0
+   Spinup limit external drives             : 0
+   Defunct disk drive count                 : 0
+   NCQ status                               : Enabled
+   Statistics data collection mode          : Enabled
+   --------------------------------------------------------
+   Cache Properties
+   --------------------------------------------------------
+   --------------------------------------------------------
+   RAID Properties
+   --------------------------------------------------------
+   Logical devices/Failed/Degraded          : 1/0/0
+   Copyback                                 : Disabled
+   Automatic Failover                       : Enabled
+   Background consistency check             : Disabled
+   Background consistency check period      : 30
+   --------------------------------------------------------
+   Controller Version Information
+   --------------------------------------------------------
+   BIOS                                     : 5.2-0 (19109)
+   Firmware                                 : 5.2-0 (19109)
+   Driver                                   : 1.2-1 (50877)
+   Boot Flash                               : 5.2-0 (19109)
+   --------------------------------------------------------
+   Controller ZMM Information
+   --------------------------------------------------------
+   Status                                   : ZMM not installed
+   --------------------------------------------------------
+   Connector information
+                   
+   --------------------------------------------------------
+   Connector #0                             
+      Connector Name                        : CN0
+
+      --------------------------------------
+   Lane Information                         
+      --------------------------------------
+      Lane #0                               
+         Channel ID                         : 0
+         Device ID                          : 0
+         SAS Address                        : 50000D1108189300
+         PHY Identifier                     : 3
+         -----------------------------------
+         Lane SAS Phy Information           
+         -----------------------------------
+            No SAS Phy information available for lane #0        
+
+      Lane #1                               
+         Channel ID                         : 0
+         Device ID                          : 1
+         SAS Address                        : 50000D1108189300
+         PHY Identifier                     : 2
+         -----------------------------------
+         Lane SAS Phy Information           
+         -----------------------------------
+            No SAS Phy information available for lane #1        
+
+      Lane #2                               
+         Channel ID                         : 0
+         Device ID                          : 2
+         SAS Address                        : 50000D1108189300
+         PHY Identifier                     : 1
+         -----------------------------------
+         Lane SAS Phy Information           
+         -----------------------------------
+            No SAS Phy information available for lane #2        
+
+      Lane #3                               
+         Channel ID                         : 0
+         Device ID                          : 3
+         SAS Address                        : 50000D1108189300
+         PHY Identifier                     : 0
+         -----------------------------------
+         Lane SAS Phy Information           
+         -----------------------------------
+            No SAS Phy information available for lane #3        
+
+
+   Connector #1                             
+      Connector Name                        : CN1
+
+      --------------------------------------
+   Lane Information                         
+      --------------------------------------
+      Lane #0                               
+         Channel ID                         : 0
+         Device ID                          : 4
+         SAS Address                        : 50000D1108189300
+         PHY Identifier                     : 7
+         -----------------------------------
+         Lane SAS Phy Information           
+         -----------------------------------
+            No SAS Phy information available for lane #0        
+
+      Lane #1                               
+         Channel ID                         : 0
+         Device ID                          : 5
+         SAS Address                        : 50000D1108189300
+         PHY Identifier                     : 6
+         -----------------------------------
+         Lane SAS Phy Information           
+         -----------------------------------
+            No SAS Phy information available for lane #1        
+
+      Lane #2                               
+         Channel ID                         : 0
+         Device ID                          : 6
+         SAS Address                        : 50000D1108189300
+         PHY Identifier                     : 5
+         -----------------------------------
+         Lane SAS Phy Information           
+         -----------------------------------
+            No SAS Phy information available for lane #2        
+
+      Lane #3                               
+         Channel ID                         : 0
+         Device ID                          : 7
+         SAS Address                        : 50000D1108189300
+         PHY Identifier                     : 4
+         -----------------------------------
+         Lane SAS Phy Information           
+         -----------------------------------
+            No SAS Phy information available for lane #3        
+
+
+
+
+Command completed successfully.

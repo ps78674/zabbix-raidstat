@@ -1,0 +1,10 @@
+Smart Array P410i in Slot 0 (Embedded)
+
+   Array A
+
+      logicaldrive 1 (558.9 GB, RAID 1, OK)
+
+   Array B
+
+      logicaldrive 2 (3.3 TB, RAID 6, OK)
+
