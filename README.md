@@ -23,9 +23,9 @@ Usage of ./raidstat:
 
 ## Installation:
 
-1. Provide `zabbix_agentd` process user passwordless sudo acces to raidstat binary - see `raidstat/zabbix/raidstat.sudoers`.
-2. Copy `zabbix/userparameter_raidstat.conf` to `/etc/zabbix/zabbix_agentd.d`.
-3. Copy compiled binaries to `/opt/raidstat`.
-4. Import template`zabbix/zbx_raid_monitoring.xml`.
+1. Provide `zabbix_agentd` process user passwordless sudo access to raidstat binary - see `raidstat/zabbix/raidstat.sudoers`
+2. Copy `zabbix/userparameter_raidstat.conf` to `/etc/zabbix/zabbix_agentd.d`
+3. Copy compiled binaries to `/opt/raidstat`
+4. Import template`zabbix/zbx_raid_monitoring.xml`
 
 Can be built with `build.sh`.
