@@ -9,15 +9,15 @@ Configured host must have two macroses - {$RAID_TOOL_PATH} and {$RAID_VENDOR} (a
 
 Usage of ./raidstat:
   -d string
-    	Discovery option, one of 'ct | ld | pd'
+      Discovery option, one of 'ct | ld | pd'
   -indent int
-    	Indent JSON output for <INT>
+     Indent JSON output for <INT>
   -path string
-    	RAID tool full path, like '/opt/<BINARY>'
+     RAID tool full path, like '/opt/<BINARY>'
   -s string
-    	Status option, one of 'ct,<CONTROLLER_ID> | ld,<CONTROLLER_ID>,<LD_ID> | pd,<CONTROLLER_ID>,<PD_ID>'
+     Status option, one of 'ct,<CONTROLLER_ID> | ld,<CONTROLLER_ID>,<LD_ID> | pd,<CONTROLLER_ID>,<PD_ID>'
   -vendor string
-    	RAID tool vendor, one of 'adaptec | hp'
+     RAID tool vendor, one of 'adaptec | hp'
 
 ## Installation:
 
