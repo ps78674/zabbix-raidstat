@@ -9,11 +9,11 @@ Configured host must have two macroses - {$RAID_TOOL_PATH} and {$RAID_VENDOR} (a
 
 Usage of ./raidstat:
   -d string
-      Discovery option, one of 'ct | ld | pd'
+     Discovery option, one of 'ct | ld | pd'
   -indent int
-     Indent JSON output for <INT>
-  -path string
-     RAID tool full path, like '/opt/<BINARY>'
+     Indent JSON output for 
+  -path string 
+     RAID tool full path, like '/opt/raidstat'
   -s string
      Status option, one of 'ct,<CONTROLLER_ID> | ld,<CONTROLLER_ID>,<LD_ID> | pd,<CONTROLLER_ID>,<PD_ID>'
   -vendor string
