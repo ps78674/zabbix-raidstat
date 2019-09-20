@@ -7,6 +7,7 @@ Zabbix template provides discovery for controllers, logical and physical drives.
 Configured host must have two macroses - {$RAID_TOOL_PATH} and {$RAID_VENDOR} (as values for cli options `-path` and `-vendor` respectively).
 ![Example host](https://user-images.githubusercontent.com/31385755/65333212-b51c8c80-dbc8-11e9-8a0f-53e52857aefd.png)
 
+```
 Usage of ./raidstat:
   -d string
      Discovery option, one of 'ct | ld | pd'
@@ -18,6 +19,7 @@ Usage of ./raidstat:
      Status option, one of 'ct,<CONTROLLER_ID> | ld,<CONTROLLER_ID>,<LD_ID> | pd,<CONTROLLER_ID>,<PD_ID>'
   -vendor string
      RAID tool vendor, one of 'adaptec | hp'
+```
 
 ## Installation:
 
