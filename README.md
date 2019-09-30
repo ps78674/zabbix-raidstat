@@ -27,5 +27,3 @@ Usage of ./raidstat:
 2. Copy `zabbix/userparameter_raidstat.conf` to `/etc/zabbix/zabbix_agentd.d`
 3. Copy compiled binaries to `/opt/raidstat`
 4. Import template`zabbix/zbx_raid_monitoring.xml`
-
-Can be built with `build.sh`.
