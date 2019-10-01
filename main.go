@@ -19,6 +19,7 @@ var indent int
 var vendors []string
 var discoveryOptions []string
 var statusOptions []string
+var vendorTools map[string]string
 
 var operation string
 var options []string
@@ -30,6 +31,10 @@ func init() {
 	vendors = []string{"adaptec", "hp"}
 	discoveryOptions = []string{"ct", "ld", "pd"}
 	statusOptions = []string{"ct,<CONTROLLER_ID>", "ld,<CONTROLLER_ID>,<LD_ID>", "pd,<CONTROLLER_ID>,<PD_ID>"}
+	vendorTools = map[string]string{
+		"adaptec": "arcconf",
+		"hp":      "ssacli",
+	}
 
 	flag.StringVar(&toolVendor, "vendor", "", fmt.Sprintf("RAID tool vendor, one of '%s'", strings.Join(vendors, " | ")))
 	flag.StringVar(&toolBinary, "path", "", "RAID tool full path, like '/opt/<BINARY>'")
@@ -39,10 +44,14 @@ func init() {
 
 	flag.Parse()
 
-	if len(toolBinary) == 0 || len(toolVendor) == 0 {
-		fmt.Printf("Both tool path and vendor must be set.\n")
+	if len(toolVendor) == 0 {
+		fmt.Printf("RAID vendor must be set.\n")
 		flag.Usage()
 		os.Exit(1)
+	}
+
+	if len(toolBinary) == 0 {
+		toolBinary = vendorTools[toolVendor]
 	}
 
 	for i, v := range vendors {
