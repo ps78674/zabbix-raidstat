@@ -33,7 +33,7 @@ if len(toolBinary) == 0 {
     toolBinary = vendorTools[toolVendor]
 }
 ```
-Instead, userparameters can be modified lke this:
+Instead, userparameters can be modified lke this:  
 UserParameter=raidstat.discovery.controllers[*], sudo /opt/raidstat/raidstat -vendor $1 -path <PATH_TO_RAID_TOOL> -d ct
 
 ## Installation:
