@@ -4,8 +4,8 @@ Simple parser for `arcconf` and `ssacli` written in Go.
 Zabbix template provides discovery for controllers, logical and physical drives.
 ![Discovery](https://user-images.githubusercontent.com/31385755/65332764-f9f3f380-dbc7-11e9-9d08-9a2e5bc236bf.png)
 
-Configured host must have two macroses - {$RAID_TOOL_PATH} and {$RAID_VENDOR} (as values for cli options `-path` and `-vendor` respectively).
-![Example host](https://user-images.githubusercontent.com/31385755/65333212-b51c8c80-dbc8-11e9-8a0f-53e52857aefd.png)
+Configured host must have macros {$RAID_VENDOR} as values for cli option `-vendor`.
+![Example host](https://user-images.githubusercontent.com/31385755/65949183-5cf54e00-e444-11e9-9070-ef570a53c7e4.png)
 
 ```
 Usage of ./raidstat:
@@ -20,6 +20,21 @@ Usage of ./raidstat:
   -vendor string
      RAID tool vendor, one of 'adaptec | hp'
 ```
+If flag '-path' is not set, then tool uses filename from map.
+```
+vendorTools = map[string]string{
+    "adaptec": "arcconf",
+    "hp":      "ssacli",
+}
+
+...
+
+if len(toolBinary) == 0 {
+    toolBinary = vendorTools[toolVendor]
+}
+```
+Instead, userparameters can be modified lke this:
+UserParameter=raidstat.discovery.controllers[*], sudo /opt/raidstat/raidstat -vendor $1 -path <PATH_TO_RAID_TOOL> -d ct
 
 ## Installation:
 
