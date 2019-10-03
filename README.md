@@ -14,7 +14,7 @@ Usage of ./raidstat:
   -indent int
      Indent JSON output for 
   -path string 
-     RAID tool full path, like '/opt/raidstat'
+     RAID tool full path, like '/opt/arcconf'
   -s string
      Status option, one of 'ct,<CONTROLLER_ID> | ld,<CONTROLLER_ID>,<LD_ID> | pd,<CONTROLLER_ID>,<PD_ID>'
   -vendor string
