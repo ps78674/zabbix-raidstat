@@ -1,4 +1,4 @@
-### Zabbix monitoring for Adaptec and HP Smart Array
+### Zabbix RAID monitoring for Adaptec and HP Smart Array
 Simple parser for `arcconf` and `ssacli` written in Go.
 
 Zabbix template provides discovery for controllers, logical and physical drives.
