@@ -8,19 +8,19 @@ import (
 
 // GetControllersIDs - get number of controllers in the system
 func GetControllersIDs(execPath string) []string {
-	inputData := functions.GetInputData(execPath, "ctrl", "all", "show")
+	inputData := functions.GetCommandOutput(execPath, "ctrl", "all", "show")
 	return functions.GetRegexpAllSubmatch(inputData, "in Slot (.*?)[\\s]")
 }
 
 // GetLogicalDrivesIDs - get number of logical drives for controller with ID 'controllerID'
 func GetLogicalDrivesIDs(execPath string, controllerID string) []string {
-	inputData := functions.GetInputData(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "ld", "all", "show")
+	inputData := functions.GetCommandOutput(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "ld", "all", "show")
 	return functions.GetRegexpAllSubmatch(inputData, "logicaldrive (.*?)[\\s]")
 }
 
 // GetPhysicalDrivesIDs - get number of physical drives for controller with ID 'controllerID'
 func GetPhysicalDrivesIDs(execPath string, controllerID string) []string {
-	inputData := functions.GetInputData(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "pd", "all", "show")
+	inputData := functions.GetCommandOutput(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "pd", "all", "show")
 	return functions.GetRegexpAllSubmatch(inputData, "physicaldrive (.*?)[\\s]")
 }
 
@@ -32,7 +32,7 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 		BatteryStatus string `json:"batterystatus"`
 	}
 
-	inputData := functions.GetInputData(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "show", "status")
+	inputData := functions.GetCommandOutput(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "show", "status")
 	status := functions.GetRegexpSubmatch(inputData, "Controller Status *: (.*)")
 	model := functions.GetRegexpSubmatch(inputData, "(.*) in Slot")
 	batteryStatus := functions.GetRegexpSubmatch(inputData, "Battery/Capacitor Status *: (.*)")
@@ -48,7 +48,7 @@ func GetLDStatus(execPath string, controllerID string, deviceID string, indent i
 		Size   string `json:"size"`
 	}
 
-	inputData := functions.GetInputData(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "ld", deviceID, "show", "detail")
+	inputData := functions.GetCommandOutput(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "ld", deviceID, "show", "detail")
 	status := functions.GetRegexpSubmatch(inputData, "Status *: (.*)")
 	size := functions.GetRegexpSubmatch(inputData, "Size *: (.*)")
 	data := ReturnData{Status: status, Size: size}
@@ -66,7 +66,7 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 		MaximumTemperature string `json:"maximumtemperature"`
 	}
 
-	inputData := functions.GetInputData(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "pd", deviceID, "show", "detail")
+	inputData := functions.GetCommandOutput(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "pd", deviceID, "show", "detail")
 	status := functions.GetRegexpSubmatch(inputData, "[\\s]{2}Status: (.*)")
 	model := functions.GetRegexpSubmatch(inputData, "Model: (.*)")
 	size := functions.GetRegexpSubmatch(inputData, "[\\s]{2}Size: (.*)")

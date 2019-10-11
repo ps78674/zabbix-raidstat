@@ -1,0 +1,61 @@
+SG driver version 3.5.36.
+
+Physical Disk Information
+----------------------------
+Adapter:             0
+PD ID:               0
+Type:                SATA PD
+Linked at:           HBA port 0
+Size:                125034840 K
+Write cache:         not supported
+SMART:               supported (on)
+NCQ:                 supported (on)
+48 bits LBA:         supported
+supported speed:     1.5 3 6 Gb/s
+Current speed:       6 Gb/s
+model:               LITEON CV8-8E128    
+FRU:                  00YK353
+MFA:                 LEN 
+8S l2 PN:            SSS7A06667
+8S SN:               H97104JH
+Serial:              SS7A06667L1TH97104JH
+Firmware version:    C27RC31 
+Locate LED status:   Not Support
+Running OS:          yes
+SSD Type:            SSD
+WWN:                 0000000000000000
+PD status:           online
+block ids:           0  
+associated VDs:      0  
+PD valid size:       0 K
+
+
+Adapter:             0
+PD ID:               1
+Type:                SATA PD
+Linked at:           HBA port 1
+Size:                125034840 K
+Write cache:         not supported
+SMART:               supported (on)
+NCQ:                 supported (on)
+48 bits LBA:         supported
+supported speed:     1.5 3 6 Gb/s
+Current speed:       6 Gb/s
+model:               LITEON CV8-8E128    
+FRU:                  00YK353
+MFA:                 LEN 
+8S l2 PN:            SSS7A06667
+8S SN:               H97104JG
+Serial:              SS7A06667L1TH97104JG
+Firmware version:    C27RC31 
+Locate LED status:   Not Support
+Running OS:          yes
+SSD Type:            SSD
+WWN:                 0000000000000000
+PD status:           online
+block ids:           4  
+associated VDs:      0  
+PD valid size:       0 K
+
+
+Total # of PD:       2

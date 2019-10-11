@@ -1,0 +1,40 @@
+SG driver version 3.5.36.
+
+Adapter ID:                          0
+Product:                             1b4b-9230
+Sub Product:                         1d49-300
+Chip revision:                       A1
+slot number:                         0
+Max PCIe speed:                      5Gb/s
+Current PCIe speed:                  5Gb/s
+Max PCIe link:                       2
+Current PCIe link:                   2
+Firmware version:                    2.3.10.1199
+Boot loader version:                 2.1.0.1009
+# of ports:                          3
+Buzzer:                              Not supported
+Supported port type:                 SATA 
+Supported RAID mode:                 RAID0 RAID1 
+Maximum disk in one VD:              2
+PM:                                  Not supported
+Expander:                            Not supported
+Maximum supported disk:              2
+Maximum supported VD:                2
+Max total blocks:                    128
+Features:                            rebuild,synchronize
+Advanced features:                   event sense code,config in flash,multi VD,spc 4,image health,timer,smart poll,bga rate,spare,ata pass through,access register,oem data
+Advanced features 2:                 scsi pass through,flash
+Max buffer size:                     3
+Stripe size supported:               32K 64K 
+Image health:                        Healthy
+Autoload image health:               Error
+Boot loader image health:            Healthy
+Firmware image health:               Healthy
+Boot ROM image health:               Healthy
+HBA info image health:               Error
+
+SerialNo:                            W2ZS97T00AW
+ModelNumber:                         M.2 + Mirroring Kit
+PartNumber:                          SR17A04514  
+WWN:                                 9d2d5282b23911e9adfbb7c656a6de2e
+SKU:                                 01KN512     

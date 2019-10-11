@@ -4,40 +4,74 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"plugin"
 	"strings"
 )
 
-var toolVendor string
-var toolBinary string
-var discoveryOption string
-var statusOption string
-var indent int
+const configFile = "config.json"
 
-var vendors []string
-var discoveryOptions []string
-var statusOptions []string
-var vendorTools map[string]string
-
-var operation string
-var options []string
-var argOption string
-var controllerID string
-var deviceID string
+var (
+	indent       int
+	toolVendor   string
+	toolBinary   string
+	operation    string
+	argOption    string
+	controllerID string
+	deviceID     string
+)
 
 func init() {
-	vendors = []string{"adaptec", "hp"}
-	discoveryOptions = []string{"ct", "ld", "pd"}
-	statusOptions = []string{"ct,<CONTROLLER_ID>", "ld,<CONTROLLER_ID>,<LD_ID>", "pd,<CONTROLLER_ID>,<PD_ID>"}
-	vendorTools = map[string]string{
-		"adaptec": "arcconf",
-		"hp":      "ssacli",
+	type Config struct {
+		Vendors interface{} `json:"vendors"`
 	}
 
+	var (
+		configJSON      Config
+		vendors         []string
+		discoveryOption string
+		statusOption    string
+		options         []string
+	)
+
+	ex, err := os.Executable()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	configFile, err := os.Open(fmt.Sprintf("%s/%s", filepath.Dir(ex), configFile))
+	if err != nil {
+		fmt.Printf("Error opening config file: %s\n", err)
+		os.Exit(1)
+	}
+
+	configData, err := ioutil.ReadAll(configFile)
+	if err != nil {
+		fmt.Printf("Error reading config file: %s\n", err)
+		os.Exit(1)
+	}
+
+	if err := json.Unmarshal(configData, &configJSON); err != nil {
+		fmt.Printf("Error unmarshalling JSON data: %s\n", err)
+		os.Exit(1)
+	}
+
+	if configJSON.Vendors == nil {
+		fmt.Println("Failed to get vendors from config file.")
+		os.Exit(1)
+	}
+
+	for v := range configJSON.Vendors.(map[string]interface{}) {
+		vendors = append(vendors, v)
+	}
+
+	discoveryOptions := []string{"ct", "ld", "pd"}
+	statusOptions := []string{"ct,<CONTROLLER_ID>", "ld,<CONTROLLER_ID>,<LD_ID>", "pd,<CONTROLLER_ID>,<PD_ID>"}
+
 	flag.StringVar(&toolVendor, "vendor", "", fmt.Sprintf("RAID tool vendor, one of '%s'", strings.Join(vendors, " | ")))
-	flag.StringVar(&toolBinary, "path", "", "RAID tool full path, like '/opt/<BINARY>'")
 	flag.StringVar(&discoveryOption, "d", "", fmt.Sprintf("Discovery option, one of '%s'", strings.Join(discoveryOptions, " | ")))
 	flag.StringVar(&statusOption, "s", "", fmt.Sprintf("Status option, one of '%s'", strings.Join(statusOptions, " | ")))
 	flag.IntVar(&indent, "indent", 0, "Indent JSON output for <INT>")
@@ -48,10 +82,6 @@ func init() {
 		fmt.Printf("RAID vendor must be set.\n")
 		flag.Usage()
 		os.Exit(1)
-	}
-
-	if len(toolBinary) == 0 {
-		toolBinary = vendorTools[toolVendor]
 	}
 
 	for i, v := range vendors {
@@ -67,6 +97,8 @@ func init() {
 
 		break
 	}
+
+	toolBinary = configJSON.Vendors.(map[string]interface{})[toolVendor].(string)
 
 	if len(discoveryOption) == 0 && len(statusOption) == 0 {
 		fmt.Println("Operation ('-d' or '-s') must be provided.")
@@ -120,6 +152,21 @@ func init() {
 }
 
 func discoverControllers(p *plugin.Plugin) {
+	type (
+		Element struct {
+			CT string `json:"{#CT_ID}"`
+		}
+		Reply struct {
+			Data []Element `json:"data"`
+		}
+	)
+
+	var (
+		d    []Element
+		JSON []byte
+		jErr error
+	)
+
 	pGetControllersIDs, err := p.Lookup("GetControllersIDs")
 	if err != nil {
 		fmt.Println(err)
@@ -128,22 +175,9 @@ func discoverControllers(p *plugin.Plugin) {
 
 	controllersIDs := pGetControllersIDs.(func(string) []string)(toolBinary)
 
-	type Element struct {
-		CT string `json:"{#CT_ID}"`
-	}
-
-	type Reply struct {
-		Data []Element `json:"data"`
-	}
-
-	var d []Element
-
 	for _, v := range controllersIDs {
 		d = append(d, Element{CT: v})
 	}
-
-	var JSON []byte
-	var jErr error
 
 	if indent > 0 {
 		JSON, jErr = json.MarshalIndent(Reply{d}, "", strings.Repeat(" ", indent))
@@ -160,14 +194,21 @@ func discoverControllers(p *plugin.Plugin) {
 }
 
 func discoverLogicalDrives(p *plugin.Plugin) {
-	type Element struct {
-		CT string `json:"{#CT_ID}"`
-		LD string `json:"{#LD_ID}"`
-	}
+	type (
+		Element struct {
+			CT string `json:"{#CT_ID}"`
+			LD string `json:"{#LD_ID}"`
+		}
+		Reply struct {
+			Data []Element `json:"data"`
+		}
+	)
 
-	type Reply struct {
-		Data []Element `json:"data"`
-	}
+	var (
+		d    []Element
+		JSON []byte
+		jErr error
+	)
 
 	pGetControllersIDs, err := p.Lookup("GetControllersIDs")
 	if err != nil {
@@ -180,10 +221,6 @@ func discoverLogicalDrives(p *plugin.Plugin) {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-
-	var d []Element
-	var JSON []byte
-	var jErr error
 
 	controllersIDs := pGetControllersIDs.(func(string) []string)(toolBinary)
 	for _, ctID := range controllersIDs {
@@ -209,18 +246,21 @@ func discoverLogicalDrives(p *plugin.Plugin) {
 }
 
 func discoverPhysicalDrives(p *plugin.Plugin) {
-	type Element struct {
-		CT string `json:"{#CT_ID}"`
-		PD string `json:"{#PD_ID}"`
-	}
+	type (
+		Element struct {
+			CT string `json:"{#CT_ID}"`
+			PD string `json:"{#PD_ID}"`
+		}
+		Reply struct {
+			Data []Element `json:"data"`
+		}
+	)
 
-	type Reply struct {
-		Data []Element `json:"data"`
-	}
-
-	var d []Element
-	var JSON []byte
-	var jErr error
+	var (
+		d    []Element
+		JSON []byte
+		jErr error
+	)
 
 	pGetControllersIDs, err := p.Lookup("GetControllersIDs")
 	if err != nil {
@@ -296,7 +336,7 @@ func main() {
 
 	p, err := plugin.Open(filepath.Dir(ex) + "/" + toolVendor + ".so")
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("Error opening plugin '%s.so': %s\n", toolVendor, err)
 		os.Exit(1)
 	}
 

@@ -1,0 +1,19 @@
+SG driver version 3.5.36.
+
+Virtual Disk Information
+-------------------------
+id:                  0
+name:                VD_R1_1
+status:              functional
+Stripe size:         64
+RAID mode:           RAID1
+Cache mode:          Not Support
+size:                122040 M
+BGA status:          not running
+Block ids:           0 4 
+# of PDs:            2
+PD RAID setup:       0 1 
+Running OS:          yes
+VD status:           optimal
+
+Total # of VD:       1

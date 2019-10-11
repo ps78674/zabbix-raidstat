@@ -10,19 +10,19 @@ import (
 
 // GetControllersIDs - get number of controllers in the system
 func GetControllersIDs(execPath string) []string {
-	inputData := functions.GetInputData(execPath, "list")
+	inputData := functions.GetCommandOutput(execPath, "list")
 	return functions.GetRegexpAllSubmatch(inputData, "Controller ([^a-zA-Z].*?):")
 }
 
 // GetLogicalDrivesIDs - get number of logical drives for controller with ID 'controllerID'
 func GetLogicalDrivesIDs(execPath string, controllerID string) []string {
-	inputData := functions.GetInputData(execPath, "getconfig", controllerID, "ld")
+	inputData := functions.GetCommandOutput(execPath, "getconfig", controllerID, "ld")
 	return functions.GetRegexpAllSubmatch(inputData, "Logical Device number (.*)[\\s]")
 }
 
 // GetPhysicalDrivesIDs - get number of physical drives for controller with ID 'controllerID'
 func GetPhysicalDrivesIDs(execPath string, controllerID string) []string {
-	inputData := functions.GetInputData(execPath, "getconfig", controllerID, "pd")
+	inputData := functions.GetCommandOutput(execPath, "getconfig", controllerID, "pd")
 	return functions.GetRegexpAllSubmatch(inputData, "Device is a Hard drive[\\s\\S]*?Reported Channel,Device\\(T:L\\)[\\s]*[:][\\s](.*?)\\(.*\\)[\\s]")
 }
 
@@ -34,7 +34,7 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 		Temperature string `json:"temperature"`
 	}
 
-	inputData := functions.GetInputData(execPath, "getconfig", controllerID, "ad")
+	inputData := functions.GetCommandOutput(execPath, "getconfig", controllerID, "ad")
 	status := functions.GetRegexpSubmatch(inputData, "Controller Status *: (.*)")
 	model := functions.GetRegexpSubmatch(inputData, "Controller Model *: (.*)")
 	temperature := functions.GetRegexpSubmatch(inputData, "Temperature *: (.*) C")
@@ -54,7 +54,7 @@ func GetLDStatus(execPath string, controllerID string, deviceID string, indent i
 		Size   string `json:"size"`
 	}
 
-	inputData := functions.GetInputData(execPath, "getconfig", controllerID, "ld", deviceID)
+	inputData := functions.GetCommandOutput(execPath, "getconfig", controllerID, "ld", deviceID)
 	status := functions.GetRegexpSubmatch(inputData, "Status of Logical Device *: (.*)")
 	size := functions.GetRegexpSubmatch(inputData, "Size *: (.*)")
 
@@ -84,7 +84,7 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 
 	}
 
-	inputData := functions.GetInputData(execPath, "getconfig", controllerID, "pd", deviceData[0], deviceData[1])
+	inputData := functions.GetCommandOutput(execPath, "getconfig", controllerID, "pd", deviceData[0], deviceData[1])
 	status := functions.GetRegexpSubmatch(inputData, "[\\s]{2}State *: (.*)")
 	model := functions.GetRegexpSubmatch(inputData, "Model *: (.*)")
 	smart := functions.GetRegexpSubmatch(inputData, "S.M.A.R.T. *: (.*)")

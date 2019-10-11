@@ -13,28 +13,21 @@ Usage of ./raidstat:
      Discovery option, one of 'ct | ld | pd'
   -indent int
      Indent JSON output for 
-  -path string 
-     RAID tool full path, like '/opt/arcconf'
   -s string
      Status option, one of 'ct,<CONTROLLER_ID> | ld,<CONTROLLER_ID>,<LD_ID> | pd,<CONTROLLER_ID>,<PD_ID>'
   -vendor string
-     RAID tool vendor, one of 'adaptec | hp'
+     RAID tool vendor, one of 'adaptec | hp | marvell'
 ```
-If flag '-path' is not set, then tool uses default filename from map.
+Config file `config.json` provides RAID vendors and tools.
 ```
-vendorTools = map[string]string{
-    "adaptec": "arcconf",
-    "hp":      "ssacli",
-}
-
-...
-
-if len(toolBinary) == 0 {
-    toolBinary = vendorTools[toolVendor]
+{
+    "vendors": {
+        "vendor1": "/PATH/TO/BINARY1",
+        "vendor2": "/PATH/TO/BINARY2"
+    }
 }
 ```
-Othervise, userparameters can be modified like this:  
-UserParameter=raidstat.discovery.controllers[*], sudo /opt/raidstat/raidstat -vendor $1 -path <PATH_TO_RAID_TOOL> -d ct
+Vendor name is used as plugin name (like "vendor1.so").
 
 ## Installation:
 

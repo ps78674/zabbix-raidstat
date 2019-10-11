@@ -11,23 +11,24 @@ import (
 	"time"
 )
 
-// GetInputData - get input data from RAID tool
-func GetInputData(execPath string, args ...string) []byte {
-	timeout := 5
+// GetCommandOutput - get input data from RAID tool
+func GetCommandOutput(execPath string, args ...string) []byte {
+	timeout := 10
 	execContext, contextCancel := context.WithTimeout(context.Background(), time.Duration(timeout)*time.Second)
 	defer contextCancel()
 
 	cmd := exec.CommandContext(execContext, execPath, args...)
 	data, err := cmd.Output()
-	if err != nil {
-		if os.Getenv("RAIDSTAT_DEBUG") == "y" {
-			fmt.Printf("Command output is:\n'''\n%s\n'''\n", string(data))
-		}
 
+	if os.Getenv("RAIDSTAT_DEBUG") == "y" {
+		fmt.Printf("Command '%s %s' output is:\n'''\n%s\n'''\n", execPath, strings.Join(args, " "), string(data))
+	}
+
+	if err != nil {
 		if execContext.Err() == context.DeadlineExceeded {
 			fmt.Printf("Command '%s' timed out.\n", cmd)
 		} else {
-			fmt.Println(err)
+			fmt.Printf("Error executing command '%s %s': %s\n", execPath, strings.Join(args, " "), err)
 		}
 
 		os.Exit(1)
@@ -42,7 +43,7 @@ func GetRegexpSubmatch(buf []byte, re string) (data string) {
 
 	if os.Getenv("RAIDSTAT_DEBUG") == "y" {
 		fmt.Printf("Regexp is '%s'\n", re)
-		fmt.Printf("Result is '%s'\n", result)
+		fmt.Printf("Result is '%s'\n", result[0])
 		fmt.Printf("Input data is:\n'''\n%s\n'''\n", string(buf))
 	}
 

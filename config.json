@@ -1,0 +1,7 @@
+{
+    "vendors": {
+        "adaptec": "arcconf",
+        "hp": "ssacli",
+        "marvell": "mvcli"
+    }
+}
