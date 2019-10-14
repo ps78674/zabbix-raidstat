@@ -18,16 +18,17 @@ Usage of ./raidstat:
   -vendor string
      RAID tool vendor, one of 'adaptec | hp | marvell'
 ```
-Config file `config.json` provides RAID vendors and tools.
+Config file `config.json` is used for raid vendors -> tools configuration.
 ```
 {
     "vendors": {
+        "hp": "ssacli",
         "vendor1": "/PATH/TO/BINARY1",
         "vendor2": "/PATH/TO/BINARY2"
     }
 }
 ```
-Vendor name is used as plugin name (like "vendor1.so").
+Vendor name is used as plugin name (like "hp.so").
 
 ## Installation:
 
