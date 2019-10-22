@@ -11,6 +11,11 @@ import (
 	"time"
 )
 
+// TrimSpacesLeftAndRight - trim leading and trailing spaces
+func TrimSpacesLeftAndRight(input string) string {
+	return strings.TrimLeft(strings.TrimRight(input, " "), " ")
+}
+
 // GetCommandOutput - get input data from RAID tool
 func GetCommandOutput(execPath string, args ...string) []byte {
 	timeout := 10
@@ -75,8 +80,10 @@ func GetRegexpAllSubmatch(buf []byte, re string) (data []string) {
 
 // MarshallJSON - returns json object
 func MarshallJSON(data interface{}, indent int) []byte {
-	var JSON []byte
-	var jErr error
+	var (
+		JSON []byte
+		jErr error
+	)
 
 	if indent > 0 {
 		JSON, jErr = json.MarshalIndent(data, "", strings.Repeat(" ", indent))
@@ -85,7 +92,7 @@ func MarshallJSON(data interface{}, indent int) []byte {
 	}
 
 	if jErr != nil {
-		fmt.Println(jErr)
+		fmt.Printf("Error marshalling JSON: %s\n", jErr.Error())
 		os.Exit(1)
 	}
 

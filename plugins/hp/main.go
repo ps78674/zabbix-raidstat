@@ -36,7 +36,12 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 	status := functions.GetRegexpSubmatch(inputData, "Controller Status *: (.*)")
 	model := functions.GetRegexpSubmatch(inputData, "(.*) in Slot")
 	batteryStatus := functions.GetRegexpSubmatch(inputData, "Battery/Capacitor Status *: (.*)")
-	data := ReturnData{Status: status, Model: model, BatteryStatus: batteryStatus}
+
+	data := ReturnData{
+		Status:        functions.TrimSpacesLeftAndRight(status),
+		Model:         functions.TrimSpacesLeftAndRight(model),
+		BatteryStatus: functions.TrimSpacesLeftAndRight(batteryStatus),
+	}
 
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }
@@ -51,7 +56,11 @@ func GetLDStatus(execPath string, controllerID string, deviceID string, indent i
 	inputData := functions.GetCommandOutput(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "ld", deviceID, "show", "detail")
 	status := functions.GetRegexpSubmatch(inputData, "Status *: (.*)")
 	size := functions.GetRegexpSubmatch(inputData, "Size *: (.*)")
-	data := ReturnData{Status: status, Size: size}
+
+	data := ReturnData{
+		Status: functions.TrimSpacesLeftAndRight(status),
+		Size:   functions.TrimSpacesLeftAndRight(size),
+	}
 
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }
@@ -72,7 +81,14 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 	size := functions.GetRegexpSubmatch(inputData, "[\\s]{2}Size: (.*)")
 	currentTemperature := functions.GetRegexpSubmatch(inputData, "Current Temperature \\(C\\): (.*)")
 	maximumTemperature := functions.GetRegexpSubmatch(inputData, "Maximum Temperature \\(C\\): (.*)")
-	data := ReturnData{Status: status, Model: model, Size: size, CurrentTemperature: currentTemperature, MaximumTemperature: maximumTemperature}
+
+	data := ReturnData{
+		Status:             functions.TrimSpacesLeftAndRight(status),
+		Model:              functions.TrimSpacesLeftAndRight(model),
+		Size:               functions.TrimSpacesLeftAndRight(size),
+		CurrentTemperature: functions.TrimSpacesLeftAndRight(currentTemperature),
+		MaximumTemperature: functions.TrimSpacesLeftAndRight(maximumTemperature),
+	}
 
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }

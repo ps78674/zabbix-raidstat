@@ -43,7 +43,12 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 		status = "OK"
 	}
 
-	data := ReturnData{Status: status, Model: model, Temperature: temperature}
+	data := ReturnData{
+		Status:      functions.TrimSpacesLeftAndRight(status),
+		Model:       functions.TrimSpacesLeftAndRight(model),
+		Temperature: functions.TrimSpacesLeftAndRight(temperature),
+	}
+
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }
 
@@ -62,7 +67,11 @@ func GetLDStatus(execPath string, controllerID string, deviceID string, indent i
 		status = "OK"
 	}
 
-	data := ReturnData{Status: status, Size: size}
+	data := ReturnData{
+		Status: functions.TrimSpacesLeftAndRight(status),
+		Size:   functions.TrimSpacesLeftAndRight(size),
+	}
+
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }
 
@@ -100,7 +109,15 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 		smart = "OK"
 	}
 
-	data := ReturnData{Status: status, Model: model, Smart: smart, SmartWarn: smartWarn, TotalSize: totalSize, Temperature: temperature}
+	data := ReturnData{
+		Status:      functions.TrimSpacesLeftAndRight(status),
+		Model:       functions.TrimSpacesLeftAndRight(model),
+		Smart:       functions.TrimSpacesLeftAndRight(smart),
+		SmartWarn:   functions.TrimSpacesLeftAndRight(smartWarn),
+		TotalSize:   functions.TrimSpacesLeftAndRight(totalSize),
+		Temperature: functions.TrimSpacesLeftAndRight(temperature),
+	}
+
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }
 

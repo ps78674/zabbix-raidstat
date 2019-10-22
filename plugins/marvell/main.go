@@ -60,7 +60,12 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 
 	modelnumber := functions.GetRegexpSubmatch(inputData, "ModelNumber:[\\s]+(.*)")
 	partnumber := functions.GetRegexpSubmatch(inputData, "PartNumber:[\\s]+(.*)")
-	data := ReturnData{Status: status, ModelNumber: modelnumber, PartNumber: partnumber}
+
+	data := ReturnData{
+		Status:      functions.TrimSpacesLeftAndRight(status),
+		ModelNumber: functions.TrimSpacesLeftAndRight(modelnumber),
+		PartNumber:  functions.TrimSpacesLeftAndRight(partnumber),
+	}
 
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }
@@ -74,7 +79,7 @@ func GetLDStatus(execPath string, controllerID string, deviceID string, indent i
 		RaidMode string `json:"raidmode"`
 	}
 
-	functions.GetCommandOutput(execPath, "adapter", "-i", controllerID)
+	functions.GetCommandOutput(execPath, "adapter", "-i", controllerID) // set adapter for next commands (mvcli-specific)
 	inputData := functions.GetCommandOutput(execPath, "info", "-o", "ld", "-i", deviceID)
 	status := functions.GetRegexpSubmatch(inputData, "VD status:[\\s]+(.*)")
 	name := functions.GetRegexpSubmatch(inputData, "name:[\\s]+(.*)")
@@ -85,7 +90,13 @@ func GetLDStatus(execPath string, controllerID string, deviceID string, indent i
 		status = "OK"
 	}
 
-	data := ReturnData{Status: status, Name: name, Size: size, RaidMode: raidmode}
+	data := ReturnData{
+		Status:   functions.TrimSpacesLeftAndRight(status),
+		Name:     functions.TrimSpacesLeftAndRight(name),
+		Size:     functions.TrimSpacesLeftAndRight(size),
+		RaidMode: functions.TrimSpacesLeftAndRight(raidmode),
+	}
+
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }
 
@@ -110,7 +121,14 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 		status = "OK"
 	}
 
-	data := ReturnData{Status: status, Model: model, FirmwareVersion: firmwareversion, Size: size, CurrentSpeed: currentspeed}
+	data := ReturnData{
+		Status:          functions.TrimSpacesLeftAndRight(status),
+		Model:           functions.TrimSpacesLeftAndRight(model),
+		FirmwareVersion: functions.TrimSpacesLeftAndRight(firmwareversion),
+		Size:            functions.TrimSpacesLeftAndRight(size),
+		CurrentSpeed:    functions.TrimSpacesLeftAndRight(currentspeed),
+	}
+
 	return append(functions.MarshallJSON(data, indent), "\n"...)
 }
 
