@@ -1,7 +1,7 @@
-### Zabbix RAID monitoring for Adaptec and HP Smart Array
-Simple parser for `arcconf` and `ssacli` written in Go.
+### Zabbix RAID monitoring for Adaptec/Microsemi, HP Smart Array and Lenovo M.2 RAID (mvcli)
+Simple parser for `arcconf`, `ssacli` and `mvcli` written in Go.
 
-Zabbix template provides discovery for controllers, logical and physical drives.
+Zabbix template provides LLD for controllers, logical and physical drives.
 ![Discovery](https://user-images.githubusercontent.com/31385755/65332764-f9f3f380-dbc7-11e9-9d08-9a2e5bc236bf.png)
 
 Configured host must have macros {$RAID_VENDOR} (as value for cli option `-vendor`).
