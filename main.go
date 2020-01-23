@@ -2,13 +2,14 @@ package main
 
 import (
 	"encoding/json"
-	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"plugin"
 	"strings"
+
+	"github.com/docopt/docopt-go"
 )
 
 const configFile = "config.json"
@@ -71,46 +72,47 @@ func init() {
 	discoveryOptions := []string{"ct", "ld", "pd"}
 	statusOptions := []string{"ct,<CONTROLLER_ID>", "ld,<CONTROLLER_ID>,<LD_ID>", "pd,<CONTROLLER_ID>,<PD_ID>"}
 
-	flag.StringVar(&toolVendor, "vendor", "", fmt.Sprintf("RAID tool vendor, one of '%s'", strings.Join(vendors, " | ")))
-	flag.StringVar(&discoveryOption, "d", "", fmt.Sprintf("Discovery option, one of '%s'", strings.Join(discoveryOptions, " | ")))
-	flag.StringVar(&statusOption, "s", "", fmt.Sprintf("Status option, one of '%s'", strings.Join(statusOptions, " | ")))
-	flag.IntVar(&indent, "indent", 0, "Indent JSON output for <INT>")
+	var programName = filepath.Base(os.Args[0])
+	var usage = fmt.Sprintf(`%[1]s: parse raid vendor tool output and format it as json
 
-	flag.Parse()
+Usage:
+  %[1]s (-v <VENDOR>) (-d <OPTION> | -s <OPTION>) [-i <INT>]
 
-	if len(toolVendor) == 0 {
-		fmt.Printf("RAID vendor must be set.\n")
-		flag.Usage()
+Options:
+  -v, --vendor <VENDOR>    raid tool vendor, one of: %[2]s
+  -d, --discover <OPTION>  discovery option, one of: %[3]s
+  -s, --status <OPTION>    status option, one of: %[4]s
+  -i, --indent <INT>       indent json output level [default: 0]
+
+  -h, --help               show this screen
+	`, programName, strings.Join(vendors, " | "), strings.Join(discoveryOptions, " | "), strings.Join(statusOptions, " | "))
+
+	cmdOpts, err := docopt.ParseDoc(usage)
+	if err != nil {
+		fmt.Printf("error parsing options: %s\n", err)
 		os.Exit(1)
 	}
+
+	toolVendor, _ = cmdOpts.String("--vendor")
+	discoveryOption, _ = cmdOpts.String("--discover")
+	statusOption, _ = cmdOpts.String("--status")
+	indent, _ = cmdOpts.Int("--indent")
 
 	for i, v := range vendors {
 		if v != toolVendor {
 			if i == len(vendors)-1 {
-				fmt.Printf("Vendors must be one of '%s' (ex.: -vendor adaptec), got '%s'.\n", strings.Join(vendors, " | "), toolVendor)
-				flag.Usage()
+				fmt.Printf("Vendors must be one of '%s' (ex.: -v adaptec), got '%s'.\n", strings.Join(vendors, " | "), toolVendor)
+				docopt.PrintHelpOnly(nil, usage)
 				os.Exit(1)
 			}
-
 			continue
 		}
-
 		break
 	}
 
 	toolBinary = configJSON.Vendors.(map[string]interface{})[toolVendor].(string)
 
-	if len(discoveryOption) == 0 && len(statusOption) == 0 {
-		fmt.Println("Operation ('-d' or '-s') must be provided.")
-		flag.Usage()
-		os.Exit(1)
-	}
-
-	if len(discoveryOption) != 0 && len(statusOption) != 0 {
-		fmt.Println("Only '-d' or '-s' must be provided.")
-		flag.Usage()
-		os.Exit(1)
-	} else if len(discoveryOption) != 0 {
+	if len(discoveryOption) != 0 {
 		operation = "Discovery"
 		options = discoveryOptions
 		argOption = discoveryOption
@@ -127,7 +129,7 @@ func init() {
 		if argOptionValues[0] != rangeValues[0] || len(argOptionValues) != len(rangeValues) {
 			if i == len(options)-1 {
 				fmt.Printf("%s option must be one of '%s', got '%s'.\n", operation, strings.Join(options, " | "), argOption)
-				flag.Usage()
+				docopt.PrintHelpOnly(nil, usage)
 				os.Exit(1)
 			}
 
