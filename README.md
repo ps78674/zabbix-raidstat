@@ -8,15 +8,19 @@ Configured host must have macros {$RAID_VENDOR} (as value for cli option `-vendo
 ![Example host](https://user-images.githubusercontent.com/31385755/65949183-5cf54e00-e444-11e9-9070-ef570a53c7e4.png)
 
 ```
-Usage of ./raidstat:
-  -d string
-     Discovery option, one of 'ct | ld | pd'
-  -indent int
-     Indent JSON output for 
-  -s string
-     Status option, one of 'ct,<CONTROLLER_ID> | ld,<CONTROLLER_ID>,<LD_ID> | pd,<CONTROLLER_ID>,<PD_ID>'
-  -vendor string
-     RAID tool vendor, one of 'adaptec | hp | marvell'
+raidstat: parse raid vendor tool output and format it as json
+
+Usage:
+  zabbix-raidstat (-v <VENDOR>) (-d <OPTION> | -s <OPTION>) [-i <INT>]
+
+Options:
+  -v, --vendor <VENDOR>    raid tool vendor, one of: adaptec | hp | marvell
+  -d, --discover <OPTION>  discovery option, one of: ct | ld | pd
+  -s, --status <OPTION>    status option, one of: ct,<CONTROLLER_ID> | ld,<CONTROLLER_ID>,<LD_ID> | pd,<CONTROLLER_ID>,<PD_ID>
+  -i, --indent <INT>       indent json output level [default: 0]
+
+  -h, --help               show this screen
+
 ```
 Config file `config.json` is used for raid vendors -> tools configuration.
 ```
