@@ -36,7 +36,7 @@ Vendor name is used as plugin name (like "hp.so").
 
 ## Installation:
 
-1. Provide `zabbix_agentd` process user with passwordless sudo access to raidstat binary - `raidstat/zabbix/raidstat.sudoers`
+1. Copy `raidstat/zabbix/raidstat.sudoers` to `/etc/sudoers.d/raidstat`
 2. Copy `zabbix/userparameter_raidstat.conf` to `/etc/zabbix/zabbix_agentd.d`
 3. Copy compiled binaries to `/opt/raidstat`
 4. Import template`zabbix/zbx_raid_monitoring.xml`
