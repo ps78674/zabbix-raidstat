@@ -34,6 +34,10 @@ Config file `config.json` is used for raid vendors -> tools configuration.
 ```
 Vendor name is used as plugin name (like "hp.so").
 
+## Compilation:
+Run `make` to compile all in build directory  
+Run `mnake tar` to get an archive  
+
 ## Installation:
 
 1. Copy `raidstat/zabbix/raidstat.sudoers` to `/etc/sudoers.d/raidstat`
