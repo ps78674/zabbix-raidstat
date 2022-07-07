@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	functions ".."
+	"github.com/ps78674/zabbix-raidstat/plugins/internal/functions"
 )
 
 // GetControllersIDs - get number of controllers in the system
