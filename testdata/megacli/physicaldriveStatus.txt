@@ -1,0 +1,54 @@
+root@elk01:~# megacli -pdInfo -PhysDrv[252:3] -aALL
+
+Enclosure Device ID: 252
+Slot Number: 3
+Drive's position: DiskGroup: 1, Span: 0, Arm: 0
+Enclosure position: N/A
+Device Id: 11
+WWN: 5002538c402de2fb
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 894.252 GB [0x6fc81ab0 Sectors]
+Non Coerced Size: 893.752 GB [0x6fb81ab0 Sectors]
+Coerced Size: 893.137 GB [0x6fa46800 Sectors]
+Sector Size:  0
+Logical Sector Size:  0
+Physical Sector Size:  0
+Firmware state: Online, Spun Up
+Commissioned Spare : No
+Emergency Spare : No
+Device Firmware Level: 003Q
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x4433221100000000
+Connected Port Number: 0(path0)
+Inquiry Data: S2HTNX0H509266      SAMSUNG MZ7KM960HAHP-00005              GXM1003Q
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None
+Device Speed: 6.0Gb/s
+Link Speed: 6.0Gb/s
+Media Type: Solid State Device
+Drive:  Not Certified
+Drive Temperature :25C (77.00 F)
+PI Eligibility:  No
+Drive is formatted for PI information:  No
+PI: No PI
+Drive's NCQ setting : N/A
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+Exit Code: 0x00
