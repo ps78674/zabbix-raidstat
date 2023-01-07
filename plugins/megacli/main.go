@@ -17,7 +17,7 @@ func GetControllersIDs(execPath string) []string {
 
 // GetLogicalDrivesIDs - get number of logical drives for controller with ID 'controllerID'
 func GetLogicalDrivesIDs(execPath string, controllerID string) []string {
-	inputData := functions.GetCommandOutput(execPath, "-LdInfo", fmt.Sprintf("-a%s", controllerID), "-Lall", "-NoLog")
+	inputData := functions.GetCommandOutput(execPath, "-LdInfo", "-Lall", fmt.Sprintf("-a%s", controllerID), "-NoLog")
 	return functions.GetRegexpAllSubmatch(inputData, "Virtual Drive: (.*?)[\\s]")
 }
 
@@ -77,7 +77,7 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 		status = strings.Join(healthStatuses, ", ")
 	}
 
-	inputData = functions.GetCommandOutput(execPath, "-AdpBbuCmd", fmt.Sprintf("-a%s", controllerID), "-GetBbuStatus", "-NoLog")
+	inputData = functions.GetCommandOutput(execPath, "-AdpBbuCmd", "-GetBbuStatus", fmt.Sprintf("-a%s", controllerID), "-NoLog")
 	batteryStatus := functions.GetRegexpSubmatch(inputData, "Battery State: (.*)")
 
 	data := ReturnData{
