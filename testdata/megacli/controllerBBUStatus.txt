@@ -1,5 +1,4 @@
 
-
 BBU status for Adapter: 0
 
 BatteryType: iBBU08

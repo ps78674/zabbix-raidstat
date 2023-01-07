@@ -1,4 +1,4 @@
-root@elk01:~# megacli -pdInfo -PhysDrv[252:3] -aALL
+# megacli -pdInfo -PhysDrv[252:3] -aALL
 
 Enclosure Device ID: 252
 Slot Number: 3

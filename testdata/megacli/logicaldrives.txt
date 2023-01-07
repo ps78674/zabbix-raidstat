@@ -1,4 +1,4 @@
-root@elk01:~# megacli -LdInfo -Lall -aALL -NoLog
+# megacli -LdInfo -Lall -aALL -NoLog
 
 
 Adapter 0 -- Virtual Drive Information:

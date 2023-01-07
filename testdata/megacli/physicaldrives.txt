@@ -1,4 +1,4 @@
-#root@elk01:~# megacli -PDList -aALL -NoLog
+# megacli -PDList -aALL -NoLog
 
 Adapter #0
 
