@@ -41,8 +41,6 @@ func GetPhysicalDrivesIDs(execPath string, controllerID string) []string {
 	}
 
 	return data
-
-	return functions.GetRegexpAllSubmatch(inputData, "Enclosure Device ID: (\\d+)\\nSlot Number: (\\d+)")
 }
 
 // GetControllerStatus - get controller status
@@ -65,8 +63,8 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 	} {
 		s := functions.GetRegexpSubmatch(inputData, fmt.Sprintf("%s[\\s]+: (.*)", v));
 
-		if s != "0" {
-			healthStatuses = append(healthStatuses, fmt.Sprintf("%s is %s", v, s))
+		if functions.TrimSpacesLeftAndRight(s) != "0" {
+			healthStatuses = append(healthStatuses, fmt.Sprintf("%s is %s", v, functions.TrimSpacesLeftAndRight(s)))
 		}
 	}
 
