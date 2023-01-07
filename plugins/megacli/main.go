@@ -36,8 +36,6 @@ func GetPhysicalDrivesIDs(execPath string, controllerID string) []string {
 
 	if len(result) > 0 {
 		for _, v := range result {
-			fmt.Printf("v is '%s' '%s'\n", v[1], v[2])
-
 			data = append(data, fmt.Sprintf("%s:%s", v[1], v[2]))
 		}
 	}
@@ -98,7 +96,7 @@ func GetLDStatus(execPath string, controllerID string, deviceID string, indent i
 		Size   string `json:"size"`
 	}
 
-	inputData := functions.GetCommandOutput(execPath, "-LdInfo", fmt.Sprintf("-a%s", controllerID) ,fmt.Sprintf("-L%s", deviceID), "-NoLog")
+	inputData := functions.GetCommandOutput(execPath, "-LdInfo", fmt.Sprintf("-L%s", deviceID), fmt.Sprintf("-a%s", controllerID), "-NoLog")
 	status := functions.GetRegexpSubmatch(inputData, "State *: (.*)")
 	size := functions.GetRegexpSubmatch(inputData, "Size *: (.*)")
 
@@ -123,7 +121,7 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 		CurrentTemperature string `json:"currenttemperature"`
 	}
 
-	inputData := functions.GetCommandOutput(execPath, "-pdInfo", fmt.Sprintf("-a%s", controllerID) ,fmt.Sprintf("-PhysDrv[%s]", deviceID), "-NoLog")
+	inputData := functions.GetCommandOutput(execPath, "-pdInfo", fmt.Sprintf("-PhysDrv[%s]", deviceID), fmt.Sprintf("-a%s", controllerID), "-NoLog")
 	status := functions.GetRegexpSubmatch(inputData, "Firmware state: (.*)")
 	model := functions.GetRegexpSubmatch(inputData, "Inquiry Data: (.*)")
 	size := functions.GetRegexpSubmatch(inputData, "Raw Size: (.*) \\[")
