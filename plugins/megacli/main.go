@@ -121,22 +121,26 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 	}
 
 	inputData := functions.GetCommandOutput(execPath, "-pdInfo", fmt.Sprintf("-PhysDrv[%s]", deviceID), fmt.Sprintf("-a%s", controllerID), "-NoLog")
-	status := functions.GetRegexpSubmatch(inputData, "Firmware state: (.*)")
+	status := functions.TrimSpacesLeftAndRight(functions.GetRegexpSubmatch(inputData, "Firmware state: (.*)"))
 	model := functions.GetRegexpSubmatch(inputData, "Inquiry Data: (.*)")
 	size := functions.GetRegexpSubmatch(inputData, "Raw Size: (.*) \\[")
 	currentTemperature := functions.GetRegexpSubmatch(inputData, "Drive Temperature :(\\d+)C")
-	smart := functions.GetRegexpSubmatch(inputData, "Drive has flagged a S.M.A.R.T alert : (.*)")
+	smart := functions.TrimSpacesLeftAndRight(functions.GetRegexpSubmatch(inputData, "Drive has flagged a S.M.A.R.T alert : (.*)"))
+
+	if(status == "Online, Spun Up"){
+		status = "OK"
+	}
 
 	if(smart == "No"){
 		smart = "OK"
 	}
 
 	data := ReturnData{
-		Status:             functions.TrimSpacesLeftAndRight(status),
+		Status:             status,
 		Model:              functions.TrimSpacesLeftAndRight(model),
 		Size:               functions.TrimSpacesLeftAndRight(size),
 		CurrentTemperature: functions.TrimSpacesLeftAndRight(currentTemperature),
-		Smart:              functions.TrimSpacesLeftAndRight(smart),
+		Smart:              smart,
 	}
 
 	return append(functions.MarshallJSON(data, indent), "\n"...)
