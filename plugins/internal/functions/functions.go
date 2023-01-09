@@ -48,7 +48,9 @@ func GetRegexpSubmatch(buf []byte, re string) (data string) {
 
 	if os.Getenv("RAIDSTAT_DEBUG") == "y" {
 		fmt.Printf("Regexp is '%s'\n", re)
-		fmt.Printf("Result is '%s'\n", result[0])
+		if len(result) > 0 {
+			fmt.Printf("Result is '%s'\n", result[0])
+		}
 		fmt.Printf("Input data is:\n'''\n%s\n'''\n", string(buf))
 	}
 

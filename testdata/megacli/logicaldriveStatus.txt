@@ -1,0 +1,26 @@
+# megacli -LdInfo -L2 -aALL -NoLog
+
+
+Adapter 0 -- Virtual Drive Information:
+Virtual Drive: 2 (Target Id: 2)
+Name                :
+RAID Level          : Primary-1, Secondary-0, RAID Level Qualifier-0
+Size                : 893.137 GB
+Sector Size         : 512
+Is VD emulated      : Yes
+Mirror Data         : 893.137 GB
+State               : Optimal
+Strip Size          : 64 KB
+Number Of Drives    : 2
+Span Depth          : 1
+Default Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BBU
+Current Cache Policy: WriteBack, ReadAheadNone, Cached, No Write Cache if Bad BBU
+Default Access Policy: Read/Write
+Current Access Policy: Read/Write
+Disk Cache Policy   : Disabled
+Encryption Type     : None
+Is VD Cached: No
+
+
+
+Exit Code: 0x00

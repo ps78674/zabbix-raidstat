@@ -1,0 +1,312 @@
+# megacli -PDList -aALL -NoLog
+
+Adapter #0
+
+Enclosure Device ID: 252
+Slot Number: 0
+Drive's position: DiskGroup: 0, Span: 0, Arm: 0
+Enclosure position: N/A
+Device Id: 8
+WWN: 5000C500540FFA88
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SAS
+
+Raw Size: 279.396 GB [0x22ecb25c Sectors]
+Non Coerced Size: 278.896 GB [0x22dcb25c Sectors]
+Coerced Size: 278.464 GB [0x22cee000 Sectors]
+Sector Size:  0
+Logical Sector Size:  0
+Physical Sector Size:  0
+Firmware state: Online, Spun Up
+Commissioned Spare : No
+Emergency Spare : No
+Device Firmware Level: 0002
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x5000c500540ffa89
+SAS Address(1): 0x0
+Connected Port Number: 4(path0)
+Inquiry Data: SEAGATE ST9300605SS     00026XP3CGA2
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None
+Device Speed: 6.0Gb/s
+Link Speed: 6.0Gb/s
+Media Type: Hard Disk Device
+Drive:  Not Certified
+Drive Temperature :34C (93.20 F)
+PI Eligibility:  No
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s
+Port-1 :
+Port status: Active
+Port's Linkspeed: Unknown
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+Enclosure Device ID: 252
+Slot Number: 1
+Drive's position: DiskGroup: 0, Span: 0, Arm: 1
+Enclosure position: N/A
+Device Id: 9
+WWN: 5000C50054102DAC
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SAS
+
+Raw Size: 279.396 GB [0x22ecb25c Sectors]
+Non Coerced Size: 278.896 GB [0x22dcb25c Sectors]
+Coerced Size: 278.464 GB [0x22cee000 Sectors]
+Sector Size:  0
+Logical Sector Size:  0
+Physical Sector Size:  0
+Firmware state: Online, Spun Up
+Commissioned Spare : No
+Emergency Spare : No
+Device Firmware Level: 0002
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x5000c50054102dad
+SAS Address(1): 0x0
+Connected Port Number: 3(path0)
+Inquiry Data: SEAGATE ST9300605SS     00026XP3CGMN
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None
+Device Speed: 6.0Gb/s
+Link Speed: 6.0Gb/s
+Media Type: Hard Disk Device
+Drive:  Not Certified
+Drive Temperature :32C (89.60 F)
+PI Eligibility:  No
+Drive is formatted for PI information:  No
+PI: No PI
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s
+Port-1 :
+Port status: Active
+Port's Linkspeed: Unknown
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+Enclosure Device ID: 252
+Slot Number: 2
+Drive's position: DiskGroup: 1, Span: 0, Arm: 1
+Enclosure position: N/A
+Device Id: 10
+WWN: 5002538c402de2fc
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 894.252 GB [0x6fc81ab0 Sectors]
+Non Coerced Size: 893.752 GB [0x6fb81ab0 Sectors]
+Coerced Size: 893.137 GB [0x6fa46800 Sectors]
+Sector Size:  0
+Logical Sector Size:  0
+Physical Sector Size:  0
+Firmware state: Online, Spun Up
+Commissioned Spare : No
+Emergency Spare : No
+Device Firmware Level: 003Q
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x4433221101000000
+Connected Port Number: 5(path0)
+Inquiry Data: S2HTNX0H509267      SAMSUNG MZ7KM960HAHP-00005              GXM1003Q
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None
+Device Speed: 6.0Gb/s
+Link Speed: 6.0Gb/s
+Media Type: Solid State Device
+Drive:  Not Certified
+Drive Temperature : N/A
+PI Eligibility:  No
+Drive is formatted for PI information:  No
+PI: No PI
+Drive's NCQ setting : N/A
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+Enclosure Device ID: 252
+Slot Number: 3
+Drive's position: DiskGroup: 1, Span: 0, Arm: 0
+Enclosure position: N/A
+Device Id: 11
+WWN: 5002538c402de2fb
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 894.252 GB [0x6fc81ab0 Sectors]
+Non Coerced Size: 893.752 GB [0x6fb81ab0 Sectors]
+Coerced Size: 893.137 GB [0x6fa46800 Sectors]
+Sector Size:  0
+Logical Sector Size:  0
+Physical Sector Size:  0
+Firmware state: Online, Spun Up
+Commissioned Spare : No
+Emergency Spare : No
+Device Firmware Level: 003Q
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x4433221100000000
+Connected Port Number: 0(path0)
+Inquiry Data: S2HTNX0H509266      SAMSUNG MZ7KM960HAHP-00005              GXM1003Q
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None
+Device Speed: 6.0Gb/s
+Link Speed: 6.0Gb/s
+Media Type: Solid State Device
+Drive:  Not Certified
+Drive Temperature : N/A
+PI Eligibility:  No
+Drive is formatted for PI information:  No
+PI: No PI
+Drive's NCQ setting : N/A
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+Enclosure Device ID: 252
+Slot Number: 4
+Drive's position: DiskGroup: 2, Span: 0, Arm: 0
+Enclosure position: N/A
+Device Id: 12
+WWN: 5002538e0002b330
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 894.252 GB [0x6fc81ab0 Sectors]
+Non Coerced Size: 893.752 GB [0x6fb81ab0 Sectors]
+Coerced Size: 893.137 GB [0x6fa46800 Sectors]
+Sector Size:  0
+Logical Sector Size:  0
+Physical Sector Size:  0
+Firmware state: Online, Spun Up
+Commissioned Spare : No
+Emergency Spare : No
+Device Firmware Level: 304Q
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x4433221107000000
+Connected Port Number: 2(path0)
+Inquiry Data: S47NNE0KB01294      SAMSUNG MZ7KH960HAJR-00005              HXM7304Q
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None
+Device Speed: 6.0Gb/s
+Link Speed: 6.0Gb/s
+Media Type: Solid State Device
+Drive:  Not Certified
+Drive Temperature : N/A
+PI Eligibility:  No
+Drive is formatted for PI information:  No
+PI: No PI
+Drive's NCQ setting : N/A
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+Enclosure Device ID: 252
+Slot Number: 5
+Drive's position: DiskGroup: 2, Span: 0, Arm: 1
+Enclosure position: N/A
+Device Id: 13
+WWN: 5002538e0002b327
+Sequence Number: 2
+Media Error Count: 0
+Other Error Count: 0
+Predictive Failure Count: 0
+Last Predictive Failure Event Seq Number: 0
+PD Type: SATA
+
+Raw Size: 894.252 GB [0x6fc81ab0 Sectors]
+Non Coerced Size: 893.752 GB [0x6fb81ab0 Sectors]
+Coerced Size: 893.137 GB [0x6fa46800 Sectors]
+Sector Size:  0
+Logical Sector Size:  0
+Physical Sector Size:  0
+Firmware state: Online, Spun Up
+Commissioned Spare : No
+Emergency Spare : No
+Device Firmware Level: 304Q
+Shield Counter: 0
+Successful diagnostics completion on :  N/A
+SAS Address(0): 0x4433221106000000
+Connected Port Number: 1(path0)
+Inquiry Data: S47NNE0KB01285      SAMSUNG MZ7KH960HAJR-00005              HXM7304Q
+FDE Capable: Not Capable
+FDE Enable: Disable
+Secured: Unsecured
+Locked: Unlocked
+Needs EKM Attention: No
+Foreign State: None
+Device Speed: 6.0Gb/s
+Link Speed: 6.0Gb/s
+Media Type: Solid State Device
+Drive:  Not Certified
+Drive Temperature : N/A
+PI Eligibility:  No
+Drive is formatted for PI information:  No
+PI: No PI
+Drive's NCQ setting : N/A
+Port-0 :
+Port status: Active
+Port's Linkspeed: 6.0Gb/s
+Drive has flagged a S.M.A.R.T alert : No
+
+
+
+
+Exit Code: 0x00

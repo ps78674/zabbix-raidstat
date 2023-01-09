@@ -1,0 +1,298 @@
+# megacli -AdpAllInfo -a0
+
+Adapter #0
+
+==============================================================================
+                    Versions
+                ================
+Product Name    : LSI MegaRAID SAS 9261-8i
+Serial No       : SV21414201
+FW Package Build: 12.12.0-0111
+
+                    Mfg. Data
+                ================
+Mfg. Date       : 04/04/12
+Rework Date     : 00/00/00
+Revision No     : 15A
+Battery FRU     : N/A
+
+                Image Versions in Flash:
+                ================
+FW Version         : 2.130.353-1663
+BIOS Version       : 3.24.00_4.12.05.00_0x05160000
+Preboot CLI Version: 04.04-020:#%00009
+WebBIOS Version    : 6.0-49-e_45-Rel
+NVDATA Version     : 2.09.03-0032
+Boot Block Version : 2.02.00.00-0000
+BOOT Version       : 09.250.01.219
+
+                Pending Images in Flash
+                ================
+None
+
+                PCI Info
+                ================
+Controller Id   : 0000
+Vendor Id       : 1000
+Device Id       : 0079
+SubVendorId     : 1000
+SubDeviceId     : 9263
+
+Host Interface  : PCIE
+
+ChipRevision    : B4
+
+Link Speed           : 0
+Number of Frontend Port: 0
+Device Interface  : PCIE
+
+Number of Backend Port: 8
+Port  :  Address
+0        4433221100000000
+1        4433221106000000
+2        4433221107000000
+3        5000c50054102dad
+4        5000c500540ffa89
+5        4433221101000000
+6        0000000000000000
+7        0000000000000000
+
+                HW Configuration
+                ================
+SAS Address      : 500605b004927800
+BBU              : Present
+Alarm            : Present
+NVRAM            : Present
+Serial Debugger  : Present
+Memory           : Present
+Flash            : Present
+Memory Size      : 512MB
+TPM              : Absent
+On board Expander: Absent
+Upgrade Key      : Absent
+Temperature sensor for ROC    : Absent
+Temperature sensor for controller    : Absent
+
+
+                Settings
+                ================
+Current Time                     : 17:7:59 1/7, 2023
+Predictive Fail Poll Interval    : 300sec
+Interrupt Throttle Active Count  : 16
+Interrupt Throttle Completion    : 50us
+Rebuild Rate                     : 30%
+PR Rate                          : 30%
+BGI Rate                         : 30%
+Check Consistency Rate           : 30%
+Reconstruction Rate              : 30%
+Cache Flush Interval             : 4s
+Max Drives to Spinup at One Time : 4
+Delay Among Spinup Groups        : 2s
+Physical Drive Coercion Mode     : 1GB
+Cluster Mode                     : Disabled
+Alarm                            : Disabled
+Auto Rebuild                     : Enabled
+Battery Warning                  : Enabled
+Ecc Bucket Size                  : 15
+Ecc Bucket Leak Rate             : 1440 Minutes
+Restore HotSpare on Insertion    : Enabled
+Expose Enclosure Devices         : Enabled
+Maintain PD Fail History         : Enabled
+Host Request Reordering          : Enabled
+Auto Detect BackPlane Enabled    : SGPIO/i2c SEP
+Load Balance Mode                : Auto
+Use FDE Only                     : Yes
+Security Key Assigned            : No
+Security Key Failed              : No
+Security Key Not Backedup        : No
+Default LD PowerSave Policy      : Controller Defined
+Maximum number of direct attached drives to spin up in 1 min : 120
+Auto Enhanced Import             : No
+Any Offline VD Cache Preserved   : No
+Allow Boot with Preserved Cache  : No
+Disable Online Controller Reset  : No
+PFK in NVRAM                     : No
+Use disk activity for locate     : No
+POST delay                       : 90 seconds
+BIOS Error Handling              : Stop On Errors
+Current Boot Mode                 :Normal
+                Capabilities
+                ================
+RAID Level Supported             : RAID0, RAID1, RAID5, RAID6, RAID00, RAID10, RAID50, RAID60, PRL 11, PRL 11 with spanning, SRL 3 supported, PRL11-RLQ0 DDF layout with no span, PRL11-RLQ0 DDF layout with span
+Supported Drives                 : SAS, SATA
+
+Allowed Mixing:
+
+Mix in Enclosure Allowed
+Mix of SAS/SATA of HDD type in VD Allowed
+Mix of SAS/SATA of SSD type in VD Allowed
+
+                Status
+                ================
+ECC Bucket Count                 : 0
+
+                Limitations
+                ================
+Max Arms Per VD          : 32
+Max Spans Per VD         : 8
+Max Arrays               : 128
+Max Number of VDs        : 64
+Max Parallel Commands    : 1008
+Max SGE Count            : 80
+Max Data Transfer Size   : 8192 sectors
+Max Strips PerIO         : 42
+Max LD per array         : 16
+Min Strip Size           : 8 KB
+Max Strip Size           : 1.0 MB
+Max Configurable CacheCade Size: 0 GB
+Current Size of CacheCade      : 0 GB
+Current Size of FW Cache       : 346 MB
+
+                Device Present
+                ================
+Virtual Drives    : 3
+  Degraded        : 0
+  Offline         : 0
+Physical Devices  : 7
+  Disks           : 6
+  Critical Disks  : 0
+  Failed Disks    : 0
+
+                Supported Adapter Operations
+                ================
+Rebuild Rate                    : Yes
+CC Rate                         : Yes
+BGI Rate                        : Yes
+Reconstruct Rate                : Yes
+Patrol Read Rate                : Yes
+Alarm Control                   : Yes
+Cluster Support                 : No
+BBU                             : Yes
+Spanning                        : Yes
+Dedicated Hot Spare             : Yes
+Revertible Hot Spares           : Yes
+Foreign Config Import           : Yes
+Self Diagnostic                 : Yes
+Allow Mixed Redundancy on Array : No
+Global Hot Spares               : Yes
+Deny SCSI Passthrough           : No
+Deny SMP Passthrough            : No
+Deny STP Passthrough            : No
+Support Security                : No
+Snapshot Enabled                : No
+Support the OCE without adding drives : Yes
+Support PFK                     : Yes
+Support PI                      : No
+Support Boot Time PFK Change    : No
+Disable Online PFK Change       : No
+PFK TrailTime Remaining         : 0 days 0 hours
+Support Shield State            : No
+Block SSD Write Disk Cache Change: No
+
+                Supported VD Operations
+                ================
+Read Policy          : Yes
+Write Policy         : Yes
+IO Policy            : Yes
+Access Policy        : Yes
+Disk Cache Policy    : Yes
+Reconstruction       : Yes
+Deny Locate          : No
+Deny CC              : No
+Allow Ctrl Encryption: No
+Enable LDBBM         : No
+Support Breakmirror  : No
+Power Savings        : No
+
+                Supported PD Operations
+                ================
+Force Online                            : Yes
+Force Offline                           : Yes
+Force Rebuild                           : Yes
+Deny Force Failed                       : No
+Deny Force Good/Bad                     : No
+Deny Missing Replace                    : No
+Deny Clear                              : No
+Deny Locate                             : No
+Support Temperature                     : Yes
+NCQ                                     : No
+Disable Copyback                        : No
+Enable JBOD                             : No
+Enable Copyback on SMART                : No
+Enable Copyback to SSD on SMART Error   : Yes
+Enable SSD Patrol Read                  : No
+PR Correct Unconfigured Areas           : Yes
+Enable Spin Down of UnConfigured Drives : Yes
+Disable Spin Down of hot spares         : No
+Spin Down time                          : 30
+T10 Power State                         : No
+                Error Counters
+                ================
+Memory Correctable Errors   : 0
+Memory Uncorrectable Errors : 0
+
+                Cluster Information
+                ================
+Cluster Permitted     : No
+Cluster Active        : No
+
+                Default Settings
+                ================
+Phy Polarity                     : 0
+Phy PolaritySplit                : 0
+Background Rate                  : 30
+Strip Size                       : 64kB
+Flush Time                       : 4 seconds
+Write Policy                     : WB
+Read Policy                      : None
+Cache When BBU Bad               : Disabled
+Cached IO                        : Yes
+SMART Mode                       : Mode 6
+Alarm Disable                    : No
+Coercion Mode                    : 1GB
+ZCR Config                       : Unknown
+Dirty LED Shows Drive Activity   : No
+BIOS Continue on Error           : 0
+Spin Down Mode                   : None
+Allowed Device Type              : SAS/SATA Mix
+Allow Mix in Enclosure           : Yes
+Allow HDD SAS/SATA Mix in VD     : Yes
+Allow SSD SAS/SATA Mix in VD     : Yes
+Allow HDD/SSD Mix in VD          : No
+Allow SATA in Cluster            : No
+Max Chained Enclosures           : 16
+Disable Ctrl-R                   : Yes
+Enable Web BIOS                  : Yes
+Direct PD Mapping                : No
+BIOS Enumerate VDs               : Yes
+Restore Hot Spare on Insertion   : Yes
+Expose Enclosure Devices         : Yes
+Maintain PD Fail History         : Yes
+Disable Puncturing               : No
+Zero Based Enclosure Enumeration : Yes
+PreBoot CLI Enabled              : Yes
+LED Show Drive Activity          : Yes
+Cluster Disable                  : Yes
+SAS Disable                      : No
+Auto Detect BackPlane Enable     : SGPIO/i2c SEP
+Use FDE Only                     : Yes
+Enable Led Header                : Yes
+Delay during POST                : 0
+EnableCrashDump                  : No
+Disable Online Controller Reset  : No
+EnableLDBBM                      : No
+Un-Certified Hard Disk Drives    : Allow
+Treat Single span R1E as R10     : No
+Max LD per array                 : 16
+Power Saving option              : Don't Auto spin down Configured Drives
+Max power savings option is  not allowed for LDs. Only T10 power conditions are to be used.
+Default spin down time in minutes: 30
+Enable JBOD                      : No
+TTY Log In Flash                 : No
+Auto Enhanced Import             : No
+BreakMirror RAID Support         : No
+Disable Join Mirror              : No
+Enable Shield State              : No
+Time taken to detect CME         : 60s
+
+Exit Code: 0x00
