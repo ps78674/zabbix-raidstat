@@ -30,17 +30,21 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 		Status        string `json:"status"`
 		Model         string `json:"model"`
 		BatteryStatus string `json:"batterystatus"`
+		CacheStatus   string `json:"cachestatus"`
 	}
 
 	inputData := functions.GetCommandOutput(execPath, "ctrl", fmt.Sprintf("slot=%s", controllerID), "show", "status")
 	status := functions.GetRegexpSubmatch(inputData, "Controller Status *: (.*)")
 	model := functions.GetRegexpSubmatch(inputData, "(.*) in Slot")
 	batteryStatus := functions.GetRegexpSubmatch(inputData, "Battery/Capacitor Status *: (.*)")
+	cacheStatus := functions.GetRegexpSubmatch(inputData, "Cache Status *: (.*)")
+
 
 	data := ReturnData{
 		Status:        functions.TrimSpacesLeftAndRight(status),
 		Model:         functions.TrimSpacesLeftAndRight(model),
 		BatteryStatus: functions.TrimSpacesLeftAndRight(batteryStatus),
+		CacheStatus :  functions.TrimSpacesLeftAndRight(cacheStatus),
 	}
 
 	return append(functions.MarshallJSON(data, indent), "\n"...)

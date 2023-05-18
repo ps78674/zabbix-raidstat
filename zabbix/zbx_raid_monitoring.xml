@@ -1,921 +1,388 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>4.0</version>
-    <date>2019-10-01T09:00:25Z</date>
+    <version>6.0</version>
+    <date>2023-05-18T12:54:08Z</date>
     <groups>
         <group>
+            <uuid>e960332b3f6c46a1956486d4f3f99fce</uuid>
             <name>Templates/Server hardware</name>
         </group>
     </groups>
     <templates>
         <template>
+            <uuid>49e3c8e90e0d476e8a9ac24aba537859</uuid>
             <template>Template RAID Monitoring</template>
             <name>Template RAID Monitoring</name>
-            <description/>
             <groups>
                 <group>
                     <name>Templates/Server hardware</name>
                 </group>
             </groups>
-            <applications>
-                <application>
-                    <name>Logical Drives</name>
-                </application>
-                <application>
-                    <name>Physical Drives</name>
-                </application>
-                <application>
-                    <name>RAID Controllers</name>
-                </application>
-            </applications>
-            <items/>
             <discovery_rules>
                 <discovery_rule>
+                    <uuid>45d32a13d8d74b04b8a3e7693ec58426</uuid>
                     <name>Controllers Discovery</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>raidstat.discovery.controllers[{$RAID_VENDOR}]</key>
                     <delay>1h</delay>
-                    <status>0</status>
-                    <allowed_hosts/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <filter>
-                        <evaltype>0</evaltype>
-                        <formula/>
-                        <conditions/>
-                    </filter>
                     <lifetime>10d</lifetime>
-                    <description/>
                     <item_prototypes>
                         <item_prototype>
+                            <uuid>8e377d39ee8d4a5ab1e4fb850d407ece</uuid>
                             <name>Controller {#CT_ID} Model</name>
-                            <type>18</type>
-                            <snmp_community/>
-                            <snmp_oid/>
+                            <type>DEPENDENT</type>
                             <key>raidstat.discovery.controllers[{#CT_ID}, model]</key>
                             <delay>0</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>RAID Controllers</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
+                            <value_type>TEXT</value_type>
                             <preprocessing>
                                 <step>
-                                    <type>12</type>
-                                    <params>$.model</params>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.model</parameter>
+                                    </parameters>
                                 </step>
                             </preprocessing>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
                             <master_item>
                                 <key>raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]</key>
                             </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>RAID Controllers</value>
+                                </tag>
+                            </tags>
                         </item_prototype>
                         <item_prototype>
+                            <uuid>7945cd0e7cb448d7b87ccdcaa1468ce7</uuid>
+                            <name>Controller {#CT_ID} Battery Status</name>
+                            <type>DEPENDENT</type>
+                            <key>raidstat.status.controller[{#CT_ID}, batterystatus]</key>
+                            <delay>0</delay>
+                            <history>30d</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.cachestatus</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]</key>
+                            </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>RAID Cache Controllers</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>e696c5ba2cb0435489773371a715ff96</uuid>
+                                    <expression>find(/Template RAID Monitoring/raidstat.status.controller[{#CT_ID}, batterystatus],,&quot;like&quot;,&quot;OK&quot;)=0</expression>
+                                    <name>Controller {#CT_ID} battery status is {ITEM.LASTVALUE}</name>
+                                    <priority>AVERAGE</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>c413f7d0f02f4543accb4b733114cd9c</uuid>
+                            <name>Controller {#CT_ID} Cache Status</name>
+                            <type>DEPENDENT</type>
+                            <key>raidstat.status.controller[{#CT_ID}, cachestatus]</key>
+                            <delay>0</delay>
+                            <history>30d</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.cachestatus</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]</key>
+                            </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>RAID Cache Controllers</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>b3db206612724c90bcacabcb3a2d64ea</uuid>
+                                    <expression>find(/Template RAID Monitoring/raidstat.status.controller[{#CT_ID}, cachestatus],,&quot;like&quot;,&quot;OK&quot;)=0</expression>
+                                    <name>Controller {#CT_ID} cache status is {ITEM.LASTVALUE}</name>
+                                    <priority>AVERAGE</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>01503391d9d248198954790090e33d1d</uuid>
                             <name>Controller {#CT_ID} Status</name>
-                            <type>18</type>
-                            <snmp_community/>
-                            <snmp_oid/>
+                            <type>DEPENDENT</type>
                             <key>raidstat.status.controller[{#CT_ID}, status]</key>
                             <delay>0</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>RAID Controllers</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
+                            <value_type>TEXT</value_type>
                             <preprocessing>
                                 <step>
-                                    <type>12</type>
-                                    <params>$.status</params>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.status</parameter>
+                                    </parameters>
                                 </step>
                             </preprocessing>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
                             <master_item>
                                 <key>raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]</key>
                             </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>RAID Controllers</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>dea5863994194c519f1031710e78c42b</uuid>
+                                    <expression>find(/Template RAID Monitoring/raidstat.status.controller[{#CT_ID}, status],,&quot;like&quot;,&quot;OK&quot;)=0</expression>
+                                    <name>Controller {#CT_ID} status is {ITEM.LASTVALUE}</name>
+                                    <priority>AVERAGE</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
                         </item_prototype>
                         <item_prototype>
+                            <uuid>41e351ae22ed4477890a10619c689ed9</uuid>
                             <name>Controller {#CT_ID} JSON Data</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <snmp_oid/>
                             <key>raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]</key>
                             <delay>30m</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>RAID Controllers</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <preprocessing/>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
-                            <master_item/>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>RAID Controllers</value>
+                                </tag>
+                            </tags>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes>
-                        <trigger_prototype>
-                            <expression>{Template RAID Monitoring:raidstat.status.controller[{#CT_ID}, status].str(OK)}=0</expression>
-                            <recovery_mode>0</recovery_mode>
-                            <recovery_expression/>
-                            <name>Controller {#CT_ID} status is {ITEM.LASTVALUE}</name>
-                            <correlation_mode>0</correlation_mode>
-                            <correlation_tag/>
-                            <url/>
-                            <status>0</status>
-                            <priority>3</priority>
-                            <description/>
-                            <type>0</type>
-                            <manual_close>0</manual_close>
-                            <dependencies/>
-                            <tags/>
-                        </trigger_prototype>
-                    </trigger_prototypes>
-                    <graph_prototypes/>
-                    <host_prototypes/>
-                    <jmx_endpoint/>
-                    <timeout>3s</timeout>
-                    <url/>
-                    <query_fields/>
-                    <posts/>
-                    <status_codes>200</status_codes>
-                    <follow_redirects>1</follow_redirects>
-                    <post_type>0</post_type>
-                    <http_proxy/>
-                    <headers/>
-                    <retrieve_mode>0</retrieve_mode>
-                    <request_method>0</request_method>
-                    <allow_traps>0</allow_traps>
-                    <ssl_cert_file/>
-                    <ssl_key_file/>
-                    <ssl_key_password/>
-                    <verify_peer>0</verify_peer>
-                    <verify_host>0</verify_host>
                 </discovery_rule>
                 <discovery_rule>
+                    <uuid>4b89fa60b9164b00bd08ee125f300fce</uuid>
                     <name>Logical Drives Discovery</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>raidstat.discovery.logicaldrives[{$RAID_VENDOR}]</key>
                     <delay>1h</delay>
-                    <status>0</status>
-                    <allowed_hosts/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <filter>
-                        <evaltype>0</evaltype>
-                        <formula/>
-                        <conditions/>
-                    </filter>
                     <lifetime>10d</lifetime>
-                    <description/>
                     <item_prototypes>
                         <item_prototype>
+                            <uuid>d0be30cb5dde4705bfce61ec86b74908</uuid>
                             <name>Logical Drive {#LD_ID} Status</name>
-                            <type>18</type>
-                            <snmp_community/>
-                            <snmp_oid/>
+                            <type>DEPENDENT</type>
                             <key>raidstat.status.logicaldrive[{#LD_ID}, status]</key>
                             <delay>0</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Logical Drives</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
+                            <value_type>TEXT</value_type>
                             <preprocessing>
                                 <step>
-                                    <type>12</type>
-                                    <params>$.status</params>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.status</parameter>
+                                    </parameters>
                                 </step>
                             </preprocessing>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
                             <master_item>
                                 <key>raidstat.status.logicaldrive[{$RAID_VENDOR},{#CT_ID},{#LD_ID}]</key>
                             </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Logical Drives</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>d53f67e7d97146eab45222c1b828675f</uuid>
+                                    <expression>find(/Template RAID Monitoring/raidstat.status.logicaldrive[{#LD_ID}, status],,&quot;like&quot;,&quot;OK&quot;)=0</expression>
+                                    <name>Logical drive {#LD_ID} status is {ITEM.LASTVALUE}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
                         </item_prototype>
                         <item_prototype>
+                            <uuid>7f5d3230ce1747df8ed45da51e0e9e6c</uuid>
                             <name>Logical Drive {#LD_ID} JSON Data</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <snmp_oid/>
                             <key>raidstat.status.logicaldrive[{$RAID_VENDOR},{#CT_ID},{#LD_ID}]</key>
                             <delay>10m</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Logical Drives</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <preprocessing/>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
-                            <master_item/>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Logical Drives</value>
+                                </tag>
+                            </tags>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes>
-                        <trigger_prototype>
-                            <expression>{Template RAID Monitoring:raidstat.status.logicaldrive[{#LD_ID}, status].str(OK)}=0</expression>
-                            <recovery_mode>0</recovery_mode>
-                            <recovery_expression/>
-                            <name>Logical drive {#LD_ID} status is {ITEM.LASTVALUE}</name>
-                            <correlation_mode>0</correlation_mode>
-                            <correlation_tag/>
-                            <url/>
-                            <status>0</status>
-                            <priority>4</priority>
-                            <description/>
-                            <type>0</type>
-                            <manual_close>0</manual_close>
-                            <dependencies/>
-                            <tags/>
-                        </trigger_prototype>
-                    </trigger_prototypes>
-                    <graph_prototypes/>
-                    <host_prototypes/>
-                    <jmx_endpoint/>
-                    <timeout>3s</timeout>
-                    <url/>
-                    <query_fields/>
-                    <posts/>
-                    <status_codes>200</status_codes>
-                    <follow_redirects>1</follow_redirects>
-                    <post_type>0</post_type>
-                    <http_proxy/>
-                    <headers/>
-                    <retrieve_mode>0</retrieve_mode>
-                    <request_method>0</request_method>
-                    <allow_traps>0</allow_traps>
-                    <ssl_cert_file/>
-                    <ssl_key_file/>
-                    <ssl_key_password/>
-                    <verify_peer>0</verify_peer>
-                    <verify_host>0</verify_host>
                 </discovery_rule>
                 <discovery_rule>
+                    <uuid>ffe2c1669897436588fae1d24c4e7218</uuid>
                     <name>Physical Drives Discovery</name>
-                    <type>0</type>
-                    <snmp_community/>
-                    <snmp_oid/>
                     <key>raidstat.discovery.physicaldrives[{$RAID_VENDOR}]</key>
                     <delay>1h</delay>
-                    <status>0</status>
-                    <allowed_hosts/>
-                    <snmpv3_contextname/>
-                    <snmpv3_securityname/>
-                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                    <snmpv3_authpassphrase/>
-                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                    <snmpv3_privpassphrase/>
-                    <params/>
-                    <ipmi_sensor/>
-                    <authtype>0</authtype>
-                    <username/>
-                    <password/>
-                    <publickey/>
-                    <privatekey/>
-                    <port/>
-                    <filter>
-                        <evaltype>0</evaltype>
-                        <formula/>
-                        <conditions/>
-                    </filter>
                     <lifetime>10d</lifetime>
-                    <description/>
                     <item_prototypes>
                         <item_prototype>
+                            <uuid>a05ef37f2c994e1d83e3f26aaba11731</uuid>
                             <name>Physical Drive {#PD_ID} Model</name>
-                            <type>18</type>
-                            <snmp_community/>
-                            <snmp_oid/>
+                            <type>DEPENDENT</type>
                             <key>raidstat.discovery.physicaldrives[{#PD_ID}, model]</key>
                             <delay>0</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Physical Drives</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
+                            <value_type>TEXT</value_type>
                             <preprocessing>
                                 <step>
-                                    <type>12</type>
-                                    <params>$.model</params>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.model</parameter>
+                                    </parameters>
                                 </step>
                             </preprocessing>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
                             <master_item>
                                 <key>raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]</key>
                             </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Physical Drives</value>
+                                </tag>
+                            </tags>
                         </item_prototype>
                         <item_prototype>
+                            <uuid>f71ffda203ff4cf09e81905340b15db1</uuid>
                             <name>Physical Drive {#PD_ID} SMART warnings</name>
-                            <type>18</type>
-                            <snmp_community/>
-                            <snmp_oid/>
+                            <type>DEPENDENT</type>
                             <key>raidstat.status.physicaldrive[{#PD_ID}, smartwarnings]</key>
                             <delay>0</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Physical Drives</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
+                            <value_type>TEXT</value_type>
                             <preprocessing>
                                 <step>
-                                    <type>12</type>
-                                    <params>$.smartwarnings</params>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.smartwarnings</parameter>
+                                    </parameters>
                                 </step>
                             </preprocessing>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
                             <master_item>
                                 <key>raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]</key>
                             </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Physical Drives</value>
+                                </tag>
+                            </tags>
                         </item_prototype>
                         <item_prototype>
+                            <uuid>5a50e81589e04ecc94d65c2841670783</uuid>
                             <name>Physical Drive {#PD_ID} SMART</name>
-                            <type>18</type>
-                            <snmp_community/>
-                            <snmp_oid/>
+                            <type>DEPENDENT</type>
                             <key>raidstat.status.physicaldrive[{#PD_ID}, smart]</key>
                             <delay>0</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Physical Drives</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
+                            <value_type>TEXT</value_type>
                             <preprocessing>
                                 <step>
-                                    <type>12</type>
-                                    <params>$.smart</params>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.smart</parameter>
+                                    </parameters>
                                 </step>
                             </preprocessing>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
                             <master_item>
                                 <key>raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]</key>
                             </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Physical Drives</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>4b0a77bc2c1e4578b6fc81a57a72ad0f</uuid>
+                                    <expression>find(/Template RAID Monitoring/raidstat.status.physicaldrive[{#PD_ID}, smart],,&quot;like&quot;,&quot;OK&quot;)=0</expression>
+                                    <name>Physical drive {#PD_ID} SMART problem</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
                         </item_prototype>
                         <item_prototype>
+                            <uuid>2409cbb7f711460290bd9a0ebf308be9</uuid>
                             <name>Physical Drive {#PD_ID} Status</name>
-                            <type>18</type>
-                            <snmp_community/>
-                            <snmp_oid/>
+                            <type>DEPENDENT</type>
                             <key>raidstat.status.physicaldrive[{#PD_ID}, status]</key>
                             <delay>0</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Physical Drives</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
+                            <value_type>TEXT</value_type>
                             <preprocessing>
                                 <step>
-                                    <type>12</type>
-                                    <params>$.status</params>
+                                    <type>JSONPATH</type>
+                                    <parameters>
+                                        <parameter>$.status</parameter>
+                                    </parameters>
                                 </step>
                             </preprocessing>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
                             <master_item>
                                 <key>raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]</key>
                             </master_item>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Physical Drives</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>ae97aee7f7bc4f728c9c83f980b04157</uuid>
+                                    <expression>find(/Template RAID Monitoring/raidstat.status.physicaldrive[{#PD_ID}, status],,&quot;like&quot;,&quot;OK&quot;)=0</expression>
+                                    <name>Physical drive {#PD_ID} status is {ITEM.LASTVALUE}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
                         </item_prototype>
                         <item_prototype>
+                            <uuid>834a3954c2ac4d7fb7d4f8d01e4be83b</uuid>
                             <name>Physical Drive {#PD_ID} JSON Data</name>
-                            <type>0</type>
-                            <snmp_community/>
-                            <snmp_oid/>
                             <key>raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]</key>
                             <delay>10m</delay>
                             <history>30d</history>
                             <trends>0</trends>
-                            <status>0</status>
-                            <value_type>4</value_type>
-                            <allowed_hosts/>
-                            <units/>
-                            <snmpv3_contextname/>
-                            <snmpv3_securityname/>
-                            <snmpv3_securitylevel>0</snmpv3_securitylevel>
-                            <snmpv3_authprotocol>0</snmpv3_authprotocol>
-                            <snmpv3_authpassphrase/>
-                            <snmpv3_privprotocol>0</snmpv3_privprotocol>
-                            <snmpv3_privpassphrase/>
-                            <params/>
-                            <ipmi_sensor/>
-                            <authtype>0</authtype>
-                            <username/>
-                            <password/>
-                            <publickey/>
-                            <privatekey/>
-                            <port/>
-                            <description/>
-                            <inventory_link>0</inventory_link>
-                            <applications>
-                                <application>
-                                    <name>Physical Drives</name>
-                                </application>
-                            </applications>
-                            <valuemap/>
-                            <logtimefmt/>
-                            <preprocessing/>
-                            <jmx_endpoint/>
-                            <timeout>3s</timeout>
-                            <url/>
-                            <query_fields/>
-                            <posts/>
-                            <status_codes>200</status_codes>
-                            <follow_redirects>1</follow_redirects>
-                            <post_type>0</post_type>
-                            <http_proxy/>
-                            <headers/>
-                            <retrieve_mode>0</retrieve_mode>
-                            <request_method>0</request_method>
-                            <output_format>0</output_format>
-                            <allow_traps>0</allow_traps>
-                            <ssl_cert_file/>
-                            <ssl_key_file/>
-                            <ssl_key_password/>
-                            <verify_peer>0</verify_peer>
-                            <verify_host>0</verify_host>
-                            <application_prototypes/>
-                            <master_item/>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Physical Drives</value>
+                                </tag>
+                            </tags>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes>
-                        <trigger_prototype>
-                            <expression>{Template RAID Monitoring:raidstat.status.physicaldrive[{#PD_ID}, smart].str(OK)}=0</expression>
-                            <recovery_mode>0</recovery_mode>
-                            <recovery_expression/>
-                            <name>Physical drive {#PD_ID} SMART problem</name>
-                            <correlation_mode>0</correlation_mode>
-                            <correlation_tag/>
-                            <url/>
-                            <status>0</status>
-                            <priority>4</priority>
-                            <description/>
-                            <type>0</type>
-                            <manual_close>0</manual_close>
-                            <dependencies/>
-                            <tags/>
-                        </trigger_prototype>
-                        <trigger_prototype>
-                            <expression>{Template RAID Monitoring:raidstat.status.physicaldrive[{#PD_ID}, status].str(OK)}=0</expression>
-                            <recovery_mode>0</recovery_mode>
-                            <recovery_expression/>
-                            <name>Physical drive {#PD_ID} status is {ITEM.LASTVALUE}</name>
-                            <correlation_mode>0</correlation_mode>
-                            <correlation_tag/>
-                            <url/>
-                            <status>0</status>
-                            <priority>4</priority>
-                            <description/>
-                            <type>0</type>
-                            <manual_close>0</manual_close>
-                            <dependencies/>
-                            <tags/>
-                        </trigger_prototype>
-                    </trigger_prototypes>
-                    <graph_prototypes/>
-                    <host_prototypes/>
-                    <jmx_endpoint/>
-                    <timeout>3s</timeout>
-                    <url/>
-                    <query_fields/>
-                    <posts/>
-                    <status_codes>200</status_codes>
-                    <follow_redirects>1</follow_redirects>
-                    <post_type>0</post_type>
-                    <http_proxy/>
-                    <headers/>
-                    <retrieve_mode>0</retrieve_mode>
-                    <request_method>0</request_method>
-                    <allow_traps>0</allow_traps>
-                    <ssl_cert_file/>
-                    <ssl_key_file/>
-                    <ssl_key_password/>
-                    <verify_peer>0</verify_peer>
-                    <verify_host>0</verify_host>
                 </discovery_rule>
             </discovery_rules>
-            <httptests/>
-            <macros/>
-            <templates/>
-            <screens/>
         </template>
     </templates>
 </zabbix_export>
