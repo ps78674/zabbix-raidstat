@@ -1,0 +1,112 @@
+LSI Corporation SAS2 IR Configuration Utility.
+Version 16.00.00.00 (2013.03.01) 
+Copyright (c) 2009-2013 LSI Corporation. All rights reserved. 
+
+Read configuration has been initiated for controller 0
+------------------------------------------------------------------------
+Controller information
+------------------------------------------------------------------------
+  Controller type                         : SAS2004
+  BIOS version                            : 7.33.00.00
+  Firmware version                        : 17.00.01.00
+  Channel description                     : 1 Serial Attached SCSI
+  Initiator ID                            : 0
+  Maximum physical devices                : 255
+  Concurrent commands supported           : 1720
+  Slot                                    : 19
+  Segment                                 : 0
+  Bus                                     : 129
+  Device                                  : 0
+  Function                                : 0
+  RAID Support                            : Yes
+------------------------------------------------------------------------
+IR Volume information
+------------------------------------------------------------------------
+IR volume 1
+  Volume ID                               : 285
+  Status of volume                        : Okay (OKY)
+  Volume wwid                             : 089c98a8605ba788
+  RAID level                              : RAID1
+  Size (in MB)                            : 914573
+  Physical hard disks                     :
+  PHY[0] Enclosure#/Slot#                 : 1:2
+  PHY[1] Enclosure#/Slot#                 : 1:3
+IR volume 2
+  Volume ID                               : 286
+  Status of volume                        : Okay (OKY)
+  Volume wwid                             : 0c739a272c735907
+  RAID level                              : RAID1
+  Size (in MB)                            : 952720
+  Physical hard disks                     :
+  PHY[0] Enclosure#/Slot#                 : 1:0
+  PHY[1] Enclosure#/Slot#                 : 1:1
+------------------------------------------------------------------------
+Physical device information
+------------------------------------------------------------------------
+Initiator at ID #0
+
+Device is a Hard disk
+  Enclosure #                             : 1
+  Slot #                                  : 0
+  SAS Address                             : 4433221-1-0300-0000
+  State                                   : Optimal (OPT)
+  Size (in MB)/(in sectors)               : 953869/1953525167
+  Manufacturer                            : ATA
+  Model Number                            : ST1000NM0033-9ZM
+  Firmware Revision                       : SN04
+  Serial No                               : Z1W3SJCE
+  GUID                                    : 5000c5007aecd511
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 1
+  Slot #                                  : 1
+  SAS Address                             : 4433221-1-0200-0000
+  State                                   : Optimal (OPT)
+  Size (in MB)/(in sectors)               : 953869/1953525167
+  Manufacturer                            : ATA
+  Model Number                            : ST1000NM0033-9ZM
+  Firmware Revision                       : SN04
+  Serial No                               : Z1W3SGZK
+  GUID                                    : 5000c5007aed580c
+  Protocol                                : SATA
+  Drive Type                              : SATA_HDD
+
+Device is a Hard disk
+  Enclosure #                             : 1
+  Slot #                                  : 2
+  SAS Address                             : 4433221-1-0100-0000
+  State                                   : Optimal (OPT)
+  Size (in MB)/(in sectors)               : 915715/1875385007
+  Manufacturer                            : ATA
+  Model Number                            : SAMSUNG MZ7L3960
+  Firmware Revision                       : 004Q
+  Serial No                               : S6EKNE0R801415
+  GUID                                    : 5002538f01804cfe
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+
+Device is a Hard disk
+  Enclosure #                             : 1
+  Slot #                                  : 3
+  SAS Address                             : 4433221-1-0000-0000
+  State                                   : Optimal (OPT)
+  Size (in MB)/(in sectors)               : 915715/1875385007
+  Manufacturer                            : ATA
+  Model Number                            : SAMSUNG MZ7L3960
+  Firmware Revision                       : 004Q
+  Serial No                               : S6EKNE0R801416
+  GUID                                    : 5002538f01804cff
+  Protocol                                : SATA
+  Drive Type                              : SATA_SSD
+------------------------------------------------------------------------
+Enclosure information
+------------------------------------------------------------------------
+  Enclosure#                              : 1
+  Logical ID                              : 500062b0:002dc110
+  Numslots                                : 4
+  StartSlot                               : 0
+------------------------------------------------------------------------
+SAS2IRCU: Command DISPLAY Completed Successfully.
+SAS2IRCU: Utility Completed Successfully.

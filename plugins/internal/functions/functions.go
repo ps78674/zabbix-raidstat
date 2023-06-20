@@ -100,3 +100,27 @@ func MarshallJSON(data interface{}, indent int) []byte {
 
 	return JSON
 }
+
+func GetSliceByte(buf []byte, start string, end string) []byte {
+	lines := strings.Split(string(buf), "\n")
+	capture := false
+	var sliceData []byte
+
+	if len(lines) > 0 {
+		for _, v := range lines {
+			if strings.Contains(v, start) {
+				capture = true
+			}
+
+			if capture {
+				sliceData = append(sliceData, v+"\n"...)
+
+				if strings.Contains(v, "Physical") {
+					break
+				}
+			}
+		}
+	}
+
+	return sliceData
+}
