@@ -115,7 +115,7 @@ func GetSliceByte(buf []byte, start string, end string) []byte {
 			if capture {
 				sliceData = append(sliceData, v+"\n"...)
 
-				if strings.Contains(v, "Physical") {
+				if strings.Contains(v, end) {
 					break
 				}
 			}
@@ -123,4 +123,38 @@ func GetSliceByte(buf []byte, start string, end string) []byte {
 	}
 
 	return sliceData
+}
+
+func GetArraySliceByte(buf []byte, start string, end string) (data []string) {
+	lines := strings.Split(string(buf), "\n")
+	capture := false
+	var sliceData []byte
+
+	if len(lines) > 0 {
+		for _, v := range lines {
+			if strings.Contains(v, start) {
+				if capture {
+					data = append(data, string(sliceData))
+					sliceData = nil
+				} else {
+					capture = true
+				}
+			}
+
+			if strings.Contains(v, end) {
+				if capture {
+					data = append(data, string(sliceData))
+					sliceData = nil
+				}
+
+				capture = false
+			}
+
+			if capture {
+				sliceData = append(sliceData, v+"\n"...)
+			}
+		}
+	}
+
+	return
 }
