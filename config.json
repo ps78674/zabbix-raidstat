@@ -3,6 +3,7 @@
         "adaptec": "arcconf",
         "hp": "ssacli",
         "marvell": "mvcli",
-        "megacli": "megacli"
+        "megacli": "megacli",
+        "sas2ircu": "sas2ircu"
     }
 }

@@ -1,0 +1,21 @@
+LSI Corporation SAS2 IR Configuration Utility.
+Version 16.00.00.00 (2013.03.01) 
+Copyright (c) 2009-2013 LSI Corporation. All rights reserved. 
+
+Background command progress status for controller 0...
+IR Volume 1
+  Volume ID                               : 285
+  Current operation                       : None
+  Volume status                           : Enabled
+  Volume state                            : Optimal
+  Volume wwid                             : 089c98a8605ba788
+  Physical disk I/Os                      : Not quiesced
+IR Volume 2
+  Volume ID                               : 286
+  Current operation                       : None
+  Volume status                           : Enabled
+  Volume state                            : Optimal
+  Volume wwid                             : 0c739a272c735907
+  Physical disk I/Os                      : Not quiesced
+SAS2IRCU: Command STATUS Completed Successfully.
+SAS2IRCU: Utility Completed Successfully.
