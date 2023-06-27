@@ -24,7 +24,7 @@ func GetLogicalDrivesIDs(execPath string, controllerID string) []string {
 // GetPhysicalDrivesIDs - get number of physical drives for controller with ID 'controllerID'
 func GetPhysicalDrivesIDs(execPath string, controllerID string) []string {
 	inputData := functions.GetCommandOutput(execPath, controllerID, "display")
-	sliceArr := functions.GetArraySliceByte(inputData, "Device is a Hard disk", "Drive Type")
+	sliceArr := GetArraySliceByte(inputData, "Device is a Hard disk", "Drive Type")
 	data := []string{}
 
 	if len(sliceArr) > 0 {
@@ -92,7 +92,7 @@ func GetLDStatus(execPath string, controllerID string, deviceID string, indent i
 	}
 
 	inputData := functions.GetCommandOutput(execPath, controllerID, "display")
-	sliceData := functions.GetSliceByte(inputData, "IR volume "+deviceID, "Physical")
+	sliceData := GetSliceByte(inputData, "IR volume "+deviceID, "Physical")
 
 	status := functions.GetRegexpSubmatch(sliceData, "Status of volume *: (.*)")
 	size := functions.GetRegexpSubmatch(sliceData, "Size \\(in MB\\) *: (.*)")
@@ -124,7 +124,7 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 	}
 
 	inputData := functions.GetCommandOutput(execPath, controllerID, "display")
-	sliceArr := functions.GetArraySliceByte(inputData, "Device is a Hard disk", "Drive Type")
+	sliceArr := GetArraySliceByte(inputData, "Device is a Hard disk", "Drive Type")
 
 	if len(sliceArr) > 0 {
 		for _, v := range sliceArr {
@@ -152,6 +152,64 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 	}
 
 	return []byte("")
+}
+
+func GetSliceByte(buf []byte, start string, end string) []byte {
+	lines := strings.Split(string(buf), "\n")
+	capture := false
+	var sliceData []byte
+
+	if len(lines) > 0 {
+		for _, v := range lines {
+			if strings.Contains(v, start) {
+				capture = true
+			}
+
+			if capture {
+				sliceData = append(sliceData, v+"\n"...)
+
+				if strings.Contains(v, end) {
+					break
+				}
+			}
+		}
+	}
+
+	return sliceData
+}
+
+func GetArraySliceByte(buf []byte, start string, end string) (data []string) {
+	lines := strings.Split(string(buf), "\n")
+	capture := false
+	var sliceData []byte
+
+	if len(lines) > 0 {
+		for _, v := range lines {
+			if strings.Contains(v, start) {
+				if capture {
+					data = append(data, string(sliceData))
+					sliceData = nil
+				} else {
+					capture = true
+				}
+			}
+
+			if strings.Contains(v, end) {
+				if capture {
+					data = append(data, string(sliceData))
+					sliceData = nil
+				}
+
+				capture = false
+			}
+
+			if capture {
+				sliceData = append(sliceData, v+"\n"...)
+			}
+		}
+	}
+
+	return
 }
 
 func main() {}
