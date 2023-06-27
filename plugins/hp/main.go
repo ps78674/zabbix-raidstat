@@ -39,12 +39,11 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 	batteryStatus := functions.GetRegexpSubmatch(inputData, "Battery/Capacitor Status *: (.*)")
 	cacheStatus := functions.GetRegexpSubmatch(inputData, "Cache Status *: (.*)")
 
-
 	data := ReturnData{
 		Status:        functions.TrimSpacesLeftAndRight(status),
 		Model:         functions.TrimSpacesLeftAndRight(model),
 		BatteryStatus: functions.TrimSpacesLeftAndRight(batteryStatus),
-		CacheStatus :  functions.TrimSpacesLeftAndRight(cacheStatus),
+		CacheStatus:   functions.TrimSpacesLeftAndRight(cacheStatus),
 	}
 
 	return append(functions.MarshallJSON(data, indent), "\n"...)

@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"strings"
-	"regexp"
 	"os"
+	"regexp"
+	"strings"
 
 	"github.com/ps78674/zabbix-raidstat/plugins/internal/functions"
 )
@@ -61,7 +61,7 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 		"Critical Disks",
 		"Failed Disks",
 	} {
-		s := functions.GetRegexpSubmatch(inputData, fmt.Sprintf("%s[\\s]+: (.*)", v));
+		s := functions.GetRegexpSubmatch(inputData, fmt.Sprintf("%s[\\s]+: (.*)", v))
 
 		if functions.TrimSpacesLeftAndRight(s) != "0" {
 			healthStatuses = append(healthStatuses, fmt.Sprintf("%s is %s", v, functions.TrimSpacesLeftAndRight(s)))
@@ -127,11 +127,11 @@ func GetPDStatus(execPath string, controllerID string, deviceID string, indent i
 	currentTemperature := functions.GetRegexpSubmatch(inputData, "Drive Temperature :(\\d+)C")
 	smart := functions.TrimSpacesLeftAndRight(functions.GetRegexpSubmatch(inputData, "Drive has flagged a S.M.A.R.T alert : (.*)"))
 
-	if(status == "Online, Spun Up"){
+	if status == "Online, Spun Up" {
 		status = "OK"
 	}
 
-	if(smart == "No"){
+	if smart == "No" {
 		smart = "OK"
 	}
 
