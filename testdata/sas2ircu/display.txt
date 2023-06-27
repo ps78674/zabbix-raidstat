@@ -100,6 +100,20 @@ Device is a Hard disk
   GUID                                    : 5002538f01804cff
   Protocol                                : SATA
   Drive Type                              : SATA_SSD
+
+Device is a Enclosure services device
+  Enclosure #                             : 1
+  Slot #                                  : 9
+  SAS Address                             : 5b4ba0b-0-1060-6700
+  State                                   : Standby (SBY)
+  Manufacturer                            : DP
+  Model Number                            : BACKPLANE
+  Firmware Revision                       : 1.07
+  Serial No                               : 07U05HK
+  GUID                                    : N/A
+  Protocol                                : SAS
+  Device Type                             : Enclosure services device
+
 ------------------------------------------------------------------------
 Enclosure information
 ------------------------------------------------------------------------
