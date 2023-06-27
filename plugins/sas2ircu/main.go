@@ -55,7 +55,7 @@ func GetControllerStatus(execPath string, controllerID string, indent int) []byt
 	result := regexp.MustCompile("Status of volume\\s+: .*\\((.*)\\)").FindAllStringSubmatch(string(inputData), -1)
 
 	if os.Getenv("RAIDSTAT_DEBUG") == "y" {
-		fmt.Printf("Regexp is '%s'\n", "Enclosure #\\s+: (\\d+)\\n \\s+Slot #\\s+: (\\d+)")
+		fmt.Printf("Regexp is '%s'\n", "Status of volume\\s+: .*\\((.*)\\)")
 		fmt.Printf("Result is '%s'\n", result)
 	}
 
