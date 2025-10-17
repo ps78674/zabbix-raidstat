@@ -4,6 +4,8 @@ Simple parser for `arcconf`, `ssacli`, `mvcli`, `megacli` and sas2ircu written i
 Zabbix template provides LLD for controllers, logical and physical drives.
 ![Discovery](https://user-images.githubusercontent.com/31385755/65332764-f9f3f380-dbc7-11e9-9d08-9a2e5bc236bf.png)
 
+There are two version, one for passive zabbix agent (zbx_raid_monitoring.xml) and one for active zabbix agent (zbx_raid_monitoring_active.yaml). 
+
 Configured host must have macros {$RAID_VENDOR} (as value for cli option `-vendor`).
 ![Example host](https://user-images.githubusercontent.com/31385755/65949183-5cf54e00-e444-11e9-9070-ef570a53c7e4.png)
 
@@ -44,3 +46,4 @@ Run `mnake tar` to get an archive
 2. Copy `zabbix/userparameter_raidstat.conf` to `/etc/zabbix/zabbix_agentd.d`
 3. Copy compiled binaries to `/opt/raidstat`
 4. Import template`zabbix/zbx_raid_monitoring.xml`
+5. If you are running fapolicyd add trust: `fapolicyd-cli --file add /opt/raidstat/* --trust-file raidstat` and reload fapolicyd

@@ -1,0 +1,252 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 5fffb7d3e6b5466899769418b9c05502
+      name: Templates/Custom
+  templates:
+    - uuid: 49e3c8e90e0d476e8a9ac24aba537859
+      template: 'Template RAID Monitoring'
+      name: 'Template RAID Monitoring'
+      groups:
+        - name: Templates/Custom
+      discovery_rules:
+        - uuid: 45d32a13d8d74b04b8a3e7693ec58426
+          name: 'Controllers Discovery'
+          type: ZABBIX_ACTIVE
+          key: 'raidstat.discovery.controllers[{$RAID_VENDOR}]'
+          delay: 1h
+          lifetime: 10d
+          enabled_lifetime_type: DISABLE_NEVER
+          item_prototypes:
+            - uuid: 8e377d39ee8d4a5ab1e4fb850d407ece
+              name: 'Controller {#CT_ID} Model'
+              type: DEPENDENT
+              key: 'raidstat.discovery.controllers[{#CT_ID}, model]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.model
+              master_item:
+                key: 'raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]'
+              tags:
+                - tag: Application
+                  value: 'RAID Controllers'
+            - uuid: 7945cd0e7cb448d7b87ccdcaa1468ce7
+              name: 'Controller {#CT_ID} Battery Status'
+              type: DEPENDENT
+              key: 'raidstat.status.controller[{#CT_ID}, batterystatus]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.cachestatus
+              master_item:
+                key: 'raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]'
+              tags:
+                - tag: Application
+                  value: 'RAID Cache Controllers'
+              trigger_prototypes:
+                - uuid: e696c5ba2cb0435489773371a715ff96
+                  expression: 'find(/Template RAID Monitoring/raidstat.status.controller[{#CT_ID}, batterystatus],,"like","OK")=0'
+                  name: 'Controller {#CT_ID} battery status is {ITEM.LASTVALUE}'
+                  priority: AVERAGE
+            - uuid: c413f7d0f02f4543accb4b733114cd9c
+              name: 'Controller {#CT_ID} Cache Status'
+              type: DEPENDENT
+              key: 'raidstat.status.controller[{#CT_ID}, cachestatus]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.cachestatus
+              master_item:
+                key: 'raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]'
+              tags:
+                - tag: Application
+                  value: 'RAID Cache Controllers'
+              trigger_prototypes:
+                - uuid: b3db206612724c90bcacabcb3a2d64ea
+                  expression: 'find(/Template RAID Monitoring/raidstat.status.controller[{#CT_ID}, cachestatus],,"like","OK")=0'
+                  name: 'Controller {#CT_ID} cache status is {ITEM.LASTVALUE}'
+                  priority: AVERAGE
+            - uuid: 01503391d9d248198954790090e33d1d
+              name: 'Controller {#CT_ID} Status'
+              type: DEPENDENT
+              key: 'raidstat.status.controller[{#CT_ID}, status]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.status
+              master_item:
+                key: 'raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]'
+              tags:
+                - tag: Application
+                  value: 'RAID Controllers'
+              trigger_prototypes:
+                - uuid: dea5863994194c519f1031710e78c42b
+                  expression: 'find(/Template RAID Monitoring/raidstat.status.controller[{#CT_ID}, status],,"like","OK")=0'
+                  name: 'Controller {#CT_ID} status is {ITEM.LASTVALUE}'
+                  priority: AVERAGE
+            - uuid: 41e351ae22ed4477890a10619c689ed9
+              name: 'Controller {#CT_ID} JSON Data'
+              type: ZABBIX_ACTIVE
+              key: 'raidstat.status.controller[{$RAID_VENDOR},{#CT_ID}]'
+              delay: 30m
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              tags:
+                - tag: Application
+                  value: 'RAID Controllers'
+        - uuid: 4b89fa60b9164b00bd08ee125f300fce
+          name: 'Logical Drives Discovery'
+          type: ZABBIX_ACTIVE
+          key: 'raidstat.discovery.logicaldrives[{$RAID_VENDOR}]'
+          delay: 1h
+          lifetime: 10d
+          enabled_lifetime_type: DISABLE_NEVER
+          item_prototypes:
+            - uuid: d0be30cb5dde4705bfce61ec86b74908
+              name: 'Logical Drive {#LD_ID} Status'
+              type: DEPENDENT
+              key: 'raidstat.status.logicaldrive[{#LD_ID}, status]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.status
+              master_item:
+                key: 'raidstat.status.logicaldrive[{$RAID_VENDOR},{#CT_ID},{#LD_ID}]'
+              tags:
+                - tag: Application
+                  value: 'Logical Drives'
+              trigger_prototypes:
+                - uuid: d53f67e7d97146eab45222c1b828675f
+                  expression: 'find(/Template RAID Monitoring/raidstat.status.logicaldrive[{#LD_ID}, status],,"like","OK")=0'
+                  name: 'Logical drive {#LD_ID} status is {ITEM.LASTVALUE}'
+                  priority: HIGH
+            - uuid: 7f5d3230ce1747df8ed45da51e0e9e6c
+              name: 'Logical Drive {#LD_ID} JSON Data'
+              type: ZABBIX_ACTIVE
+              key: 'raidstat.status.logicaldrive[{$RAID_VENDOR},{#CT_ID},{#LD_ID}]'
+              delay: 10m
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              tags:
+                - tag: Application
+                  value: 'Logical Drives'
+        - uuid: ffe2c1669897436588fae1d24c4e7218
+          name: 'Physical Drives Discovery'
+          type: ZABBIX_ACTIVE
+          key: 'raidstat.discovery.physicaldrives[{$RAID_VENDOR}]'
+          delay: 1h
+          lifetime: 10d
+          enabled_lifetime_type: DISABLE_NEVER
+          item_prototypes:
+            - uuid: a05ef37f2c994e1d83e3f26aaba11731
+              name: 'Physical Drive {#PD_ID} Model'
+              type: DEPENDENT
+              key: 'raidstat.discovery.physicaldrives[{#PD_ID}, model]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.model
+              master_item:
+                key: 'raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]'
+              tags:
+                - tag: Application
+                  value: 'Physical Drives'
+            - uuid: f71ffda203ff4cf09e81905340b15db1
+              name: 'Physical Drive {#PD_ID} SMART warnings'
+              type: DEPENDENT
+              key: 'raidstat.status.physicaldrive[{#PD_ID}, smartwarnings]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.smartwarnings
+              master_item:
+                key: 'raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]'
+              tags:
+                - tag: Application
+                  value: 'Physical Drives'
+            - uuid: 5a50e81589e04ecc94d65c2841670783
+              name: 'Physical Drive {#PD_ID} SMART'
+              type: DEPENDENT
+              key: 'raidstat.status.physicaldrive[{#PD_ID}, smart]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.smart
+              master_item:
+                key: 'raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]'
+              tags:
+                - tag: Application
+                  value: 'Physical Drives'
+              trigger_prototypes:
+                - uuid: 4b0a77bc2c1e4578b6fc81a57a72ad0f
+                  expression: 'find(/Template RAID Monitoring/raidstat.status.physicaldrive[{#PD_ID}, smart],,"like","OK")=0'
+                  name: 'Physical drive {#PD_ID} SMART problem'
+                  priority: HIGH
+            - uuid: 2409cbb7f711460290bd9a0ebf308be9
+              name: 'Physical Drive {#PD_ID} Status'
+              type: DEPENDENT
+              key: 'raidstat.status.physicaldrive[{#PD_ID}, status]'
+              delay: '0'
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              preprocessing:
+                - type: JSONPATH
+                  parameters:
+                    - $.status
+              master_item:
+                key: 'raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]'
+              tags:
+                - tag: Application
+                  value: 'Physical Drives'
+              trigger_prototypes:
+                - uuid: ae97aee7f7bc4f728c9c83f980b04157
+                  expression: 'find(/Template RAID Monitoring/raidstat.status.physicaldrive[{#PD_ID}, status],,"like","OK")=0'
+                  name: 'Physical drive {#PD_ID} status is {ITEM.LASTVALUE}'
+                  priority: HIGH
+            - uuid: 834a3954c2ac4d7fb7d4f8d01e4be83b
+              name: 'Physical Drive {#PD_ID} JSON Data'
+              type: ZABBIX_ACTIVE
+              key: 'raidstat.status.physicaldrive[{$RAID_VENDOR},{#CT_ID},{#PD_ID}]'
+              delay: 10m
+              history: 30d
+              value_type: TEXT
+              trends: '0'
+              tags:
+                - tag: Application
+                  value: 'Physical Drives'
